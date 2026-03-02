@@ -30,6 +30,58 @@
         strong {
             font-weight: 600;
         }
+
+        /* --- RABBIT HOLES --- */
+        .rabbit-holes {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid #e0e0e0;
+        }
+        .rabbit-holes h2 {
+            margin-top: 0;
+            margin-bottom: 24px;
+        }
+        .rh-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+        .rh-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            transition: border-color .2s;
+        }
+        .rh-card:hover {
+            border-color: #888;
+        }
+        .rh-card .rh-icon {
+            font-size: 1.4rem;
+            margin-bottom: 6px;
+        }
+        .rh-card h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 0 0 6px;
+        }
+        .rh-card p {
+            font-size: 15px;
+            color: #555;
+            margin: 0 0 10px;
+            line-height: 1.6;
+        }
+        .rh-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .rh-tag {
+            font-size: 12px;
+            padding: 2px 10px;
+            border-radius: 99px;
+            background: #f0f0f0;
+            color: #555;
+        }
     </style>
 </head>
 <body>
@@ -58,6 +110,120 @@
     <p><strong>Active on</strong> <a href="https://x.com/maximilianrehn">X</a> — or email firstname.lastname at gmail or @milimaxian on telegram</p>
 
     <p><strong>Find me everywhere:</strong> <a href="https://linktr.ee/maximilianrehn">linktr.ee/maximilianrehn</a></p>
+
+    <div class="rabbit-holes">
+        <h2>My current rabbit holes</h2>
+        <div class="rh-grid">
+
+            <div class="rh-card">
+                <div class="rh-icon">&#127969;</div>
+                <h3>Community Living &amp; Popup Cities</h3>
+                <p>What happens when you intentionally design how people live together? Popup cities like Zuzalu, coliving experiments, network states, and the idea that the built environment shapes culture more than we admit.</p>
+                <div class="rh-tags">
+                    <span class="rh-tag">Zuzalu</span>
+                    <span class="rh-tag">Network State</span>
+                    <span class="rh-tag">Coliving</span>
+                    <span class="rh-tag">Balaji</span>
+                </div>
+            </div>
+
+            <div class="rh-card">
+                <div class="rh-icon">&#129302;</div>
+                <h3>Personal AI Agents</h3>
+                <p>AI that actually works for you. Projects like OpenClaw and open-source agent frameworks that give individuals real leverage. The dream of a personal AI staff that handles research, scheduling, coding, and communication.</p>
+                <div class="rh-tags">
+                    <span class="rh-tag">OpenClaw</span>
+                    <span class="rh-tag">Agentic AI</span>
+                    <span class="rh-tag">LLM Tools</span>
+                    <span class="rh-tag">Autonomy</span>
+                </div>
+            </div>
+
+            <div class="rh-card">
+                <div class="rh-icon">&#129504;</div>
+                <h3>Accelerating Wisdom &amp; Self-Development</h3>
+                <p>Speed-running personal growth. Combining ancient contemplative traditions with modern tools&mdash;journaling systems, deliberate practice, feedback loops, and protocols for becoming a better human faster.</p>
+                <div class="rh-tags">
+                    <span class="rh-tag">Integral Theory</span>
+                    <span class="rh-tag">Deliberate Practice</span>
+                    <span class="rh-tag">Feedback Loops</span>
+                </div>
+            </div>
+
+            <div class="rh-card">
+                <div class="rh-icon">&#128301;</div>
+                <h3>Consciousness &amp; Metacognition</h3>
+                <p>What is awareness aware of? The hard problem of consciousness, meditation as empirical investigation, metacognitive training, and the strange loop of a mind trying to understand itself.</p>
+                <div class="rh-tags">
+                    <span class="rh-tag">Hard Problem</span>
+                    <span class="rh-tag">Meditation</span>
+                    <span class="rh-tag">Phenomenology</span>
+                    <span class="rh-tag">Strange Loops</span>
+                </div>
+            </div>
+
+            <div class="rh-card">
+                <div class="rh-icon">&#129516;</div>
+                <h3>Longevity &amp; Optimized Health</h3>
+                <p>Bryan Johnson's Blueprint protocol as a starting point for the question: how far can we push human healthspan? Biomarkers, sleep optimization, nutrition science, and treating aging as an engineering problem.</p>
+                <div class="rh-tags">
+                    <span class="rh-tag">Blueprint</span>
+                    <span class="rh-tag">Biomarkers</span>
+                    <span class="rh-tag">Healthspan</span>
+                    <span class="rh-tag">Bryan Johnson</span>
+                </div>
+            </div>
+
+            <div class="rh-card">
+                <div class="rh-icon">&#127760;</div>
+                <h3>Decentralized Internet</h3>
+                <p>Taking back the stack. Protocols over platforms, self-sovereign identity, local-first software, peer-to-peer networks, and the long game of building internet infrastructure that no single entity controls.</p>
+                <div class="rh-tags">
+                    <span class="rh-tag">P2P</span>
+                    <span class="rh-tag">Local-First</span>
+                    <span class="rh-tag">Self-Sovereign ID</span>
+                    <span class="rh-tag">Protocols</span>
+                </div>
+            </div>
+
+            <div class="rh-card">
+                <div class="rh-icon">&#128640;</div>
+                <h3>Bootstrapping Apps</h3>
+                <p>Building products without permission or funding. Indie hacking, solo dev stacks, vibe coding with AI, rapid prototyping, and the new economics of one-person software businesses powered by LLMs.</p>
+                <div class="rh-tags">
+                    <span class="rh-tag">Indie Hacking</span>
+                    <span class="rh-tag">Vibe Coding</span>
+                    <span class="rh-tag">Solo Dev</span>
+                    <span class="rh-tag">Ship Fast</span>
+                </div>
+            </div>
+
+            <div class="rh-card">
+                <div class="rh-icon">&#128683;</div>
+                <h3>The Permanent Underclass</h3>
+                <p>What happens to people who can't keep up with AI? If intelligence becomes a commodity, entire classes of work disappear overnight. The gap between those who leverage AI and those displaced by it could become the defining inequality of our time.</p>
+                <div class="rh-tags">
+                    <span class="rh-tag">Economic Displacement</span>
+                    <span class="rh-tag">UBI</span>
+                    <span class="rh-tag">Skills Gap</span>
+                    <span class="rh-tag">Inequality</span>
+                </div>
+            </div>
+
+            <div class="rh-card">
+                <div class="rh-icon">&#9889;</div>
+                <h3>The Singularity &amp; AGI</h3>
+                <p>We're building something smarter than us and nobody has a plan. The race to AGI, alignment problems, capability overhang, economic displacement, and the question nobody wants to answer: what happens to people who can't keep up?</p>
+                <div class="rh-tags">
+                    <span class="rh-tag">AGI</span>
+                    <span class="rh-tag">Alignment</span>
+                    <span class="rh-tag">Post-Labor</span>
+                    <span class="rh-tag">Superintelligence</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
 <elevenlabs-convai agent-id="agent_01jz2a31ykf5dts7dxgr7mr3b2"></elevenlabs-convai><script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
 </body>
 </html>
