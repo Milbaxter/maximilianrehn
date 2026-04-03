@@ -1,227 +1,567 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maximilian Rehn</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            font-size: 18px;
-            line-height: 1.75;
-            letter-spacing: 0.2px;
-            color: #1a1a1a;
-            background-color: white;
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-        h2 {
-            font-weight: 600;
-            margin-top: 40px;
-        }
-        p {
-            margin-bottom: 20px;
-        }
-        a {
-            color: #1a1a1a;
-            text-decoration: underline;
-        }
-        strong {
-            font-weight: 600;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maximilian Rehn</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0a0a0c;
+      color: #e8e8e0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.75;
+    }
 
-        /* --- RABBIT HOLES --- */
-        .rabbit-holes {
-            margin-top: 60px;
-            padding-top: 40px;
-            border-top: 1px solid #e0e0e0;
-        }
-        .rabbit-holes h2 {
-            margin-top: 0;
-            margin-bottom: 24px;
-        }
-        .rh-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 16px;
-        }
-        .rh-card {
-            border: 1px solid #e0e0e0;
-            border-radius: 10px;
-            padding: 20px;
-            transition: border-color .2s;
-        }
-        .rh-card:hover {
-            border-color: #888;
-        }
-        .rh-card .rh-icon {
-            font-size: 1.4rem;
-            margin-bottom: 6px;
-        }
-        .rh-card h3 {
-            font-size: 16px;
-            font-weight: 600;
-            margin: 0 0 6px;
-        }
-        .rh-card p {
-            font-size: 15px;
-            color: #555;
-            margin: 0 0 10px;
-            line-height: 1.6;
-        }
-        .rh-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-        }
-        .rh-tag {
-            font-size: 12px;
-            padding: 2px 10px;
-            border-radius: 99px;
-            background: #f0f0f0;
-            color: #555;
-        }
-    </style>
+    .pillar {
+      position: fixed;
+      top: 0;
+      width: 22vw;
+      height: 100vh;
+      z-index: 1;
+    }
+    .pillar canvas {
+      width: 100%;
+      height: 100%;
+    }
+    .pillar--left { left: 0; }
+    .pillar--right { right: 0; }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      margin: 0 auto;
+      max-width: 560px;
+      padding: 60px 28px 80px;
+      /* keep content clear of pillars */
+      margin-left: max(22vw, calc(50% - 280px));
+      margin-right: max(22vw, calc(50% - 280px));
+    }
+
+    .content h2 {
+      font-weight: 600;
+      font-size: 1.4rem;
+      margin-bottom: 28px;
+      color: #e8e8e0;
+    }
+    .content p {
+      font-size: 0.95rem;
+      color: #aaa;
+      margin-bottom: 16px;
+    }
+    .content p strong {
+      color: #e8e8e0;
+      font-weight: 600;
+    }
+    .content a {
+      color: #5de6c8;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(93, 230, 200, 0.3);
+      transition: border-color 0.2s;
+    }
+    .content a:hover {
+      border-color: #5de6c8;
+    }
+
+    /* Rabbit holes */
+    .rabbit-holes {
+      margin-top: 60px;
+      padding-top: 40px;
+      border-top: 1px solid #222;
+    }
+    .rabbit-holes h2 {
+      margin-bottom: 24px;
+    }
+    .rh-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    .rh-card {
+      border: 1px solid #222;
+      border-radius: 10px;
+      padding: 20px;
+      transition: border-color 0.2s;
+    }
+    .rh-card:hover {
+      border-color: #444;
+    }
+    .rh-icon {
+      font-size: 1.4rem;
+      margin-bottom: 6px;
+    }
+    .rh-card h3 {
+      font-size: 15px;
+      font-weight: 600;
+      margin: 0 0 6px;
+      color: #e8e8e0;
+    }
+    .rh-card p {
+      font-size: 14px;
+      color: #777;
+      margin: 0 0 10px;
+      line-height: 1.6;
+    }
+    .rh-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .rh-tag {
+      font-size: 11px;
+      padding: 2px 10px;
+      border-radius: 99px;
+      background: #1a1a1e;
+      color: #666;
+      border: 1px solid #2a2a2e;
+    }
+
+    video { display: none; }
+
+    .progress-bar {
+      position: fixed;
+      top: 0; left: 0;
+      height: 1px;
+      background: #5de6c8;
+      z-index: 100;
+      box-shadow: 0 0 6px rgba(93, 230, 200, 0.4);
+    }
+    .scroll-hint {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 10px;
+      color: #333;
+      font-family: monospace;
+      z-index: 10;
+      transition: opacity 0.5s;
+    }
+  </style>
 </head>
 <body>
-    <h2>Maximilian "Mili" Rehn</h2>
 
-    <p><strong>Made in Helsinki</strong>, currently traveling the world through <a href="https://maximilianrehn.substack.com/p/reflections-on-pop-up-cities">tech communities</a></p>
+<div class="progress-bar" id="progress-bar"></div>
 
-    <p><strong>Master of Science in</strong> <a href="https://www.aalto.fi/en/study-options/information-networks-master-of-science-technology">Information Networks</a> from Aalto University, the #1 University in Finland</p>
+<div class="pillar pillar--left"><canvas id="canvas-left"></canvas></div>
+<div class="pillar pillar--right"><canvas id="canvas-right"></canvas></div>
 
+<div class="content">
+  <h2>Maximilian "Mili" Rehn</h2>
 
-    <p><strong>Sharing thoughts through:</strong> 
-        <a href="https://youtube.com/maximilianrehn">podcast</a> and 
-        <a href="https://maximilian-rehn.medium.com/">blog</a>
-    </p>
+  <p><strong>Made in Helsinki</strong>, currently traveling the world through <a href="https://maximilianrehn.substack.com/p/reflections-on-pop-up-cities">tech communities</a></p>
 
-    <p><strong>Competitive gaming (top 0.1-1%):</strong> Global Elite in Counter-Strike, Legendary in Hearthstone, Top 100 PKer in RuneScape, Master in StarCraft 2</p>
+  <p><strong>Master of Science in</strong> <a href="https://www.aalto.fi/en/study-options/information-networks-master-of-science-technology">Information Networks</a> from Aalto University, the #1 University in Finland</p>
 
-    <p><strong>Second Lieutenant</strong> in the Finnish Army Reserve</p>
+  <p><strong>Sharing thoughts through:</strong> <a href="https://youtube.com/maximilianrehn">podcast</a> and <a href="https://maximilian-rehn.medium.com/">blog</a></p>
 
-    <p><strong>Other interests:</strong>
-        <a href="http://aaltodoc.aalto.fi/items/ed972c22-9eb2-484d-948b-dacc49e97a47">cognitive neuroscience</a>, gym, AI, longevity, yoga, human potential, racket sports, bjj, learning Portuguese, and reading lots and lots of books
-    </p>
+  <p><strong>Competitive gaming (top 0.1-1%):</strong> Global Elite in Counter-Strike, Legendary in Hearthstone, Top 100 PKer in RuneScape, Master in StarCraft 2</p>
 
-    <p><strong>Active on</strong> <a href="https://x.com/maximilianrehn">X</a> — or email firstname.lastname at gmail or @milimaxian on telegram</p>
+  <p><strong>Second Lieutenant</strong> in the Finnish Army Reserve</p>
 
-    <p><strong>Find me everywhere:</strong> <a href="https://linktr.ee/maximilianrehn">linktr.ee/maximilianrehn</a></p>
+  <p><strong>Other interests:</strong> neuroscience, crypto, gym, AI, longevity, yoga, human potential, racket sports, bjj, travel, and reading lots and lots of books</p>
 
-    <div class="rabbit-holes">
-        <h2>My current rabbit holes</h2>
-        <div class="rh-grid">
+  <p><strong>Active on</strong> <a href="https://x.com/maximilianrehn">X</a> — or email firstname.lastname at gmail or @milimaxian on telegram</p>
 
-            <div class="rh-card">
-                <div class="rh-icon">&#127969;</div>
-                <h3>Community Living &amp; Popup Cities</h3>
-                <p>What happens when you intentionally design how people live together? Popup cities like Zuzalu, coliving experiments, network states, and the idea that the built environment shapes culture more than we admit.</p>
-                <div class="rh-tags">
-                    <span class="rh-tag">Zuzalu</span>
-                    <span class="rh-tag">Network State</span>
-                    <span class="rh-tag">Coliving</span>
-                    <span class="rh-tag">Balaji</span>
-                </div>
-            </div>
+  <p><strong>Find me everywhere:</strong> <a href="https://linktr.ee/maximilianrehn">linktr.ee/maximilianrehn</a></p>
 
-            <div class="rh-card">
-                <div class="rh-icon">&#129302;</div>
-                <h3>Personal AI Agents</h3>
-                <p>AI that actually works for you. Projects like OpenClaw and open-source agent frameworks that give individuals real leverage. The dream of a personal AI staff that handles research, scheduling, coding, and communication.</p>
-                <div class="rh-tags">
-                    <span class="rh-tag">OpenClaw</span>
-                    <span class="rh-tag">Agentic AI</span>
-                    <span class="rh-tag">LLM Tools</span>
-                    <span class="rh-tag">Autonomy</span>
-                </div>
-            </div>
+  <div class="rabbit-holes">
+    <h2>My current rabbit holes</h2>
+    <div class="rh-grid">
 
-            <div class="rh-card">
-                <div class="rh-icon">&#129504;</div>
-                <h3>Accelerating Wisdom &amp; Self-Development</h3>
-                <p>Speed-running personal growth. Combining ancient contemplative traditions with modern tools&mdash;journaling systems, deliberate practice, feedback loops, and protocols for becoming a better human faster.</p>
-                <div class="rh-tags">
-                    <span class="rh-tag">Integral Theory</span>
-                    <span class="rh-tag">Deliberate Practice</span>
-                    <span class="rh-tag">Feedback Loops</span>
-                </div>
-            </div>
-
-            <div class="rh-card">
-                <div class="rh-icon">&#128301;</div>
-                <h3>Consciousness &amp; Metacognition</h3>
-                <p>What is awareness aware of? The hard problem of consciousness, meditation as empirical investigation, metacognitive training, and the strange loop of a mind trying to understand itself.</p>
-                <div class="rh-tags">
-                    <span class="rh-tag">Hard Problem</span>
-                    <span class="rh-tag">Meditation</span>
-                    <span class="rh-tag">Phenomenology</span>
-                    <span class="rh-tag">Strange Loops</span>
-                </div>
-            </div>
-
-            <div class="rh-card">
-                <div class="rh-icon">&#129516;</div>
-                <h3>Longevity &amp; Optimized Health</h3>
-                <p>Bryan Johnson's Blueprint protocol as a starting point for the question: how far can we push human healthspan? Biomarkers, sleep optimization, nutrition science, and treating aging as an engineering problem.</p>
-                <div class="rh-tags">
-                    <span class="rh-tag">Blueprint</span>
-                    <span class="rh-tag">Biomarkers</span>
-                    <span class="rh-tag">Healthspan</span>
-                    <span class="rh-tag">Bryan Johnson</span>
-                </div>
-            </div>
-
-            <div class="rh-card">
-                <div class="rh-icon">&#127760;</div>
-                <h3>Decentralized Internet</h3>
-                <p>Taking back the stack. Protocols over platforms, self-sovereign identity, local-first software, peer-to-peer networks, and the long game of building internet infrastructure that no single entity controls.</p>
-                <div class="rh-tags">
-                    <span class="rh-tag">P2P</span>
-                    <span class="rh-tag">Local-First</span>
-                    <span class="rh-tag">Self-Sovereign ID</span>
-                    <span class="rh-tag">Protocols</span>
-                </div>
-            </div>
-
-            <div class="rh-card">
-                <div class="rh-icon">&#128640;</div>
-                <h3>Bootstrapping Apps</h3>
-                <p>Building products without permission or funding. Indie hacking, solo dev stacks, vibe coding with AI, rapid prototyping, and the new economics of one-person software businesses powered by LLMs.</p>
-                <div class="rh-tags">
-                    <span class="rh-tag">Indie Hacking</span>
-                    <span class="rh-tag">Vibe Coding</span>
-                    <span class="rh-tag">Solo Dev</span>
-                    <span class="rh-tag">Ship Fast</span>
-                </div>
-            </div>
-
-            <div class="rh-card">
-                <div class="rh-icon">&#128683;</div>
-                <h3>The Permanent Underclass</h3>
-                <p>What happens to people who can't keep up with AI? If intelligence becomes a commodity, entire classes of work disappear overnight. The gap between those who leverage AI and those displaced by it could become the defining inequality of our time.</p>
-                <div class="rh-tags">
-                    <span class="rh-tag">Economic Displacement</span>
-                    <span class="rh-tag">UBI</span>
-                    <span class="rh-tag">Skills Gap</span>
-                    <span class="rh-tag">Inequality</span>
-                </div>
-            </div>
-
-            <div class="rh-card">
-                <div class="rh-icon">&#9889;</div>
-                <h3>The Singularity &amp; AGI</h3>
-                <p>We're building something smarter than us and nobody has a plan. The race to AGI, alignment problems, capability overhang, economic displacement, and the question nobody wants to answer: what happens to people who can't keep up?</p>
-                <div class="rh-tags">
-                    <span class="rh-tag">AGI</span>
-                    <span class="rh-tag">Alignment</span>
-                    <span class="rh-tag">Post-Labor</span>
-                    <span class="rh-tag">Superintelligence</span>
-                </div>
-            </div>
-
+      <div class="rh-card">
+        <div class="rh-icon">&#127969;</div>
+        <h3>Community Living &amp; Popup Cities</h3>
+        <p>What happens when you intentionally design how people live together? Popup cities like Zuzalu, coliving experiments, network states, and the idea that the built environment shapes culture more than we admit.</p>
+        <div class="rh-tags">
+          <span class="rh-tag">Zuzalu</span>
+          <span class="rh-tag">Network State</span>
+          <span class="rh-tag">Coliving</span>
+          <span class="rh-tag">Balaji</span>
         </div>
+      </div>
+
+      <div class="rh-card">
+        <div class="rh-icon">&#129302;</div>
+        <h3>Personal AI Agents</h3>
+        <p>AI that actually works for you. Projects like OpenClaw and open-source agent frameworks that give individuals real leverage. The dream of a personal AI staff that handles research, scheduling, coding, and communication.</p>
+        <div class="rh-tags">
+          <span class="rh-tag">OpenClaw</span>
+          <span class="rh-tag">Agentic AI</span>
+          <span class="rh-tag">LLM Tools</span>
+          <span class="rh-tag">Autonomy</span>
+        </div>
+      </div>
+
+      <div class="rh-card">
+        <div class="rh-icon">&#129504;</div>
+        <h3>Accelerating Wisdom &amp; Self-Development</h3>
+        <p>Speed-running personal growth. Combining ancient contemplative traditions with modern tools&mdash;journaling systems, deliberate practice, feedback loops, and protocols for becoming a better human faster.</p>
+        <div class="rh-tags">
+          <span class="rh-tag">Integral Theory</span>
+          <span class="rh-tag">Deliberate Practice</span>
+          <span class="rh-tag">Feedback Loops</span>
+        </div>
+      </div>
+
+      <div class="rh-card">
+        <div class="rh-icon">&#128301;</div>
+        <h3>Consciousness &amp; Metacognition</h3>
+        <p>What is awareness aware of? The hard problem of consciousness, meditation as empirical investigation, metacognitive training, and the strange loop of a mind trying to understand itself.</p>
+        <div class="rh-tags">
+          <span class="rh-tag">Hard Problem</span>
+          <span class="rh-tag">Meditation</span>
+          <span class="rh-tag">Phenomenology</span>
+          <span class="rh-tag">Strange Loops</span>
+        </div>
+      </div>
+
+      <div class="rh-card">
+        <div class="rh-icon">&#129516;</div>
+        <h3>Longevity &amp; Optimized Health</h3>
+        <p>Bryan Johnson's Blueprint protocol as a starting point for the question: how far can we push human healthspan? Biomarkers, sleep optimization, nutrition science, and treating aging as an engineering problem.</p>
+        <div class="rh-tags">
+          <span class="rh-tag">Blueprint</span>
+          <span class="rh-tag">Biomarkers</span>
+          <span class="rh-tag">Healthspan</span>
+          <span class="rh-tag">Bryan Johnson</span>
+        </div>
+      </div>
+
+      <div class="rh-card">
+        <div class="rh-icon">&#127760;</div>
+        <h3>Decentralized Internet</h3>
+        <p>Taking back the stack. Protocols over platforms, self-sovereign identity, local-first software, peer-to-peer networks, and the long game of building internet infrastructure that no single entity controls.</p>
+        <div class="rh-tags">
+          <span class="rh-tag">P2P</span>
+          <span class="rh-tag">Local-First</span>
+          <span class="rh-tag">Self-Sovereign ID</span>
+          <span class="rh-tag">Protocols</span>
+        </div>
+      </div>
+
+      <div class="rh-card">
+        <div class="rh-icon">&#128640;</div>
+        <h3>Bootstrapping Apps</h3>
+        <p>Building products without permission or funding. Indie hacking, solo dev stacks, vibe coding with AI, rapid prototyping, and the new economics of one-person software businesses powered by LLMs.</p>
+        <div class="rh-tags">
+          <span class="rh-tag">Indie Hacking</span>
+          <span class="rh-tag">Vibe Coding</span>
+          <span class="rh-tag">Solo Dev</span>
+          <span class="rh-tag">Ship Fast</span>
+        </div>
+      </div>
+
+      <div class="rh-card">
+        <div class="rh-icon">&#128683;</div>
+        <h3>The Permanent Underclass</h3>
+        <p>What happens to people who can't keep up with AI? If intelligence becomes a commodity, entire classes of work disappear overnight. The gap between those who leverage AI and those displaced by it could become the defining inequality of our time.</p>
+        <div class="rh-tags">
+          <span class="rh-tag">Economic Displacement</span>
+          <span class="rh-tag">UBI</span>
+          <span class="rh-tag">Skills Gap</span>
+          <span class="rh-tag">Inequality</span>
+        </div>
+      </div>
+
+      <div class="rh-card">
+        <div class="rh-icon">&#9889;</div>
+        <h3>The Singularity &amp; AGI</h3>
+        <p>We're building something smarter than us and nobody has a plan. The race to AGI, alignment problems, capability overhang, economic displacement, and the question nobody wants to answer: what happens to people who can't keep up?</p>
+        <div class="rh-tags">
+          <span class="rh-tag">AGI</span>
+          <span class="rh-tag">Alignment</span>
+          <span class="rh-tag">Post-Labor</span>
+          <span class="rh-tag">Superintelligence</span>
+        </div>
+      </div>
+
     </div>
-<elevenlabs-convai agent-id="agent_01jz2a31ykf5dts7dxgr7mr3b2"></elevenlabs-convai><script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+  </div>
+</div>
+
+<div class="scroll-hint" id="scroll-hint">scroll to animate</div>
+
+<video id="video" muted playsinline preload="auto">
+  <source src="scene-video.mp4" type="video/mp4">
+</video>
+
+<script>
+const ASCII_CHARS = ' .,:;+*?%S#@';
+const FONT_SIZE = 10;
+const CHAR_ASPECT = 0.6;
+const LERP_FACTOR = 0.08;
+const DARK_THRESHOLD = 0.04;
+const SATURATION = 2.5;
+const BRIGHTNESS = 1.4;
+const WATERMARK_CROP = 0.05;
+
+const video = document.getElementById('video');
+const progressBar = document.getElementById('progress-bar');
+const scrollHint = document.getElementById('scroll-hint');
+
+const cellH = FONT_SIZE;
+const cellW = Math.round(cellH * CHAR_ASPECT);
+
+function buildCharAtlas(chars, cw, ch) {
+  const c = document.createElement('canvas');
+  c.width = cw * chars.length;
+  c.height = ch;
+  const ctx = c.getContext('2d');
+  ctx.clearRect(0, 0, c.width, c.height);
+  ctx.fillStyle = '#fff';
+  ctx.font = `${ch}px monospace`;
+  ctx.textBaseline = 'top';
+  for (let i = 0; i < chars.length; i++) {
+    ctx.fillText(chars[i], i * cw, 0);
+  }
+  return c;
+}
+
+const atlasCanvas = buildCharAtlas(ASCII_CHARS, cellW, cellH);
+
+const vsSource = `#version 300 es
+  in vec2 a_position;
+  in vec2 a_texcoord;
+  out vec2 v_texcoord;
+  void main() {
+    gl_Position = vec4(a_position, 0.0, 1.0);
+    v_texcoord = a_texcoord;
+  }
+`;
+
+const fsSource = `#version 300 es
+  precision highp float;
+
+  uniform sampler2D u_video;
+  uniform sampler2D u_atlas;
+  uniform vec2 u_resolution;
+  uniform vec2 u_cellSize;
+  uniform float u_numChars;
+  uniform vec2 u_atlasSize;
+  uniform vec2 u_videoSize;
+  uniform float u_cropX;
+  uniform float u_cropW;
+  uniform float u_darkThreshold;
+  uniform float u_saturation;
+  uniform float u_brightness;
+  uniform float u_wmCrop;
+
+  in vec2 v_texcoord;
+  out vec4 fragColor;
+
+  void main() {
+    vec2 pixelPos = v_texcoord * u_resolution;
+    vec2 cellIndex = floor(pixelPos / u_cellSize);
+    vec2 cellPos = fract(pixelPos / u_cellSize);
+    vec2 totalCells = floor(u_resolution / u_cellSize);
+
+    vec2 canvasUV = cellIndex / max(totalCells - 1.0, 1.0);
+
+    float effectiveH = 1.0 - u_wmCrop;
+    float halfVideoAspect = (u_videoSize.x * u_cropW) / (u_videoSize.y * effectiveH);
+    float canvasAspect = u_resolution.x / u_resolution.y;
+
+    vec2 videoUV;
+
+    if (canvasAspect > halfVideoAspect) {
+      float scale = halfVideoAspect / canvasAspect;
+      videoUV.x = u_cropX + canvasUV.x * u_cropW;
+      videoUV.y = canvasUV.y * scale + (1.0 - scale) * 0.5;
+    } else {
+      float scale = canvasAspect / halfVideoAspect;
+      videoUV.x = u_cropX + (canvasUV.x * scale + (1.0 - scale) * 0.5) * u_cropW;
+      videoUV.y = canvasUV.y;
+    }
+
+    videoUV.y = videoUV.y * effectiveH;
+
+    if (videoUV.x < u_cropX || videoUV.x > u_cropX + u_cropW ||
+        videoUV.y < 0.0 || videoUV.y > effectiveH) {
+      fragColor = vec4(0.0, 0.0, 0.0, 0.0);
+      return;
+    }
+
+    vec4 videoColor = texture(u_video, videoUV);
+    float lum = dot(videoColor.rgb, vec3(0.299, 0.587, 0.114));
+
+    if (lum < u_darkThreshold) {
+      fragColor = vec4(0.0, 0.0, 0.0, 0.0);
+      return;
+    }
+
+    float charIndex = floor(lum * (u_numChars - 1.0));
+    charIndex = clamp(charIndex, 0.0, u_numChars - 1.0);
+
+    float charWidth = u_cellSize.x / u_atlasSize.x;
+    float atlasX = charIndex * charWidth + cellPos.x * charWidth;
+    float atlasY = cellPos.y;
+    float charAlpha = texture(u_atlas, vec2(atlasX, atlasY)).r;
+
+    vec3 saturated = mix(vec3(lum), videoColor.rgb, u_saturation);
+    saturated = clamp(saturated * u_brightness, 0.0, 1.0);
+
+    fragColor = vec4(saturated, charAlpha);
+  }
+`;
+
+function createPillarRenderer(canvasEl, cropX, cropW) {
+  const gl = canvasEl.getContext('webgl2', { alpha: true, premultipliedAlpha: false });
+  if (!gl) throw new Error('No WebGL2');
+
+  gl.enable(gl.BLEND);
+  gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+  gl.clearColor(0, 0, 0, 0);
+
+  function compile(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) {
+      console.error(gl.getShaderInfoLog(s));
+    }
+    return s;
+  }
+
+  const prog = gl.createProgram();
+  gl.attachShader(prog, compile(gl.VERTEX_SHADER, vsSource));
+  gl.attachShader(prog, compile(gl.FRAGMENT_SHADER, fsSource));
+  gl.linkProgram(prog);
+
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
+    -1,-1, 0,1,  1,-1, 1,1,  -1,1, 0,0,  1,1, 1,0,
+  ]), gl.STATIC_DRAW);
+
+  const aP = gl.getAttribLocation(prog, 'a_position');
+  const aT = gl.getAttribLocation(prog, 'a_texcoord');
+  gl.enableVertexAttribArray(aP);
+  gl.vertexAttribPointer(aP, 2, gl.FLOAT, false, 16, 0);
+  gl.enableVertexAttribArray(aT);
+  gl.vertexAttribPointer(aT, 2, gl.FLOAT, false, 16, 8);
+
+  const u = {};
+  ['u_video','u_atlas','u_resolution','u_cellSize','u_numChars','u_atlasSize',
+   'u_videoSize','u_cropX','u_cropW','u_darkThreshold','u_saturation','u_brightness','u_wmCrop'
+  ].forEach(name => {
+    u[name] = gl.getUniformLocation(prog, name);
+  });
+
+  const atlasTex = gl.createTexture();
+  gl.activeTexture(gl.TEXTURE1);
+  gl.bindTexture(gl.TEXTURE_2D, atlasTex);
+  gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, atlasCanvas);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+
+  const videoTex = gl.createTexture();
+  gl.activeTexture(gl.TEXTURE0);
+  gl.bindTexture(gl.TEXTURE_2D, videoTex);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+
+  function resize() {
+    const dpr = Math.min(window.devicePixelRatio, 2);
+    canvasEl.width = canvasEl.clientWidth * dpr;
+    canvasEl.height = canvasEl.clientHeight * dpr;
+    gl.viewport(0, 0, canvasEl.width, canvasEl.height);
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  return {
+    draw() {
+      gl.clear(gl.COLOR_BUFFER_BIT);
+      gl.activeTexture(gl.TEXTURE0);
+      gl.bindTexture(gl.TEXTURE_2D, videoTex);
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, video);
+
+      gl.useProgram(prog);
+      gl.uniform1i(u.u_video, 0);
+      gl.uniform1i(u.u_atlas, 1);
+      gl.uniform2f(u.u_resolution, canvasEl.width, canvasEl.height);
+      gl.uniform2f(u.u_cellSize, cellW, cellH);
+      gl.uniform1f(u.u_numChars, ASCII_CHARS.length);
+      gl.uniform2f(u.u_atlasSize, atlasCanvas.width, atlasCanvas.height);
+      gl.uniform2f(u.u_videoSize, video.videoWidth, video.videoHeight);
+      gl.uniform1f(u.u_cropX, cropX);
+      gl.uniform1f(u.u_cropW, cropW);
+      gl.uniform1f(u.u_darkThreshold, DARK_THRESHOLD);
+      gl.uniform1f(u.u_saturation, SATURATION);
+      gl.uniform1f(u.u_brightness, BRIGHTNESS);
+      gl.uniform1f(u.u_wmCrop, WATERMARK_CROP);
+
+      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    },
+    resize,
+  };
+}
+
+const leftRenderer = createPillarRenderer(document.getElementById('canvas-left'), 0.0, 0.5);
+const rightRenderer = createPillarRenderer(document.getElementById('canvas-right'), 0.5, 0.5);
+
+let targetProgress = 0;
+let currentProgress = 0;
+let videoReady = false;
+let seeking = false;
+let seekStartTime = 0;
+let needsDraw = true;
+
+window.addEventListener('scroll', () => {
+  const max = document.documentElement.scrollHeight - window.innerHeight;
+  targetProgress = Math.min(1, Math.max(0, window.scrollY / max));
+}, { passive: true });
+
+video.addEventListener('seeked', () => {
+  seeking = false;
+  needsDraw = true;
+});
+
+video.addEventListener('loadeddata', () => {
+  videoReady = true;
+  video.currentTime = 0;
+  needsDraw = true;
+});
+
+video.load();
+
+function render() {
+  requestAnimationFrame(render);
+  if (!videoReady) return;
+
+  const prevProgress = currentProgress;
+  currentProgress += (targetProgress - currentProgress) * LERP_FACTOR;
+
+  const targetTime = currentProgress * video.duration;
+
+  if (seeking && performance.now() - seekStartTime > 400) {
+    seeking = false;
+  }
+
+  if (!seeking && Math.abs(video.currentTime - targetTime) > 0.03) {
+    seeking = true;
+    seekStartTime = performance.now();
+    video.currentTime = targetTime;
+  }
+
+  const isMoving = Math.abs(currentProgress - prevProgress) > 0.0001;
+  if (needsDraw || isMoving) {
+    needsDraw = false;
+    leftRenderer.draw();
+    rightRenderer.draw();
+  }
+
+  progressBar.style.width = (currentProgress * 100) + '%';
+  scrollHint.style.opacity = currentProgress < 0.03 ? '1' : '0';
+}
+
+render();
+</script>
 </body>
 </html>
