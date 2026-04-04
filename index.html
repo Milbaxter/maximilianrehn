@@ -167,12 +167,12 @@
   <p><strong>Find me everywhere:</strong> <a href="https://linktr.ee/maximilianrehn">linktr.ee/maximilianrehn</a></p>
 
   <div class="rabbit-holes">
-    <h2>My current rabbit holes</h2>
+    <h2>What I'm exploring</h2>
     <div class="rh-grid">
 
       <div class="rh-card">
         <div class="rh-icon">&#127969;</div>
-        <h3>Community Living &amp; Popup Cities</h3>
+        <h3>Popup Living</h3>
         <p>What happens when you intentionally design how people live together? Popup cities like Zuzalu, coliving experiments, network states, and the idea that the built environment shapes culture more than we admit.</p>
         <div class="rh-tags">
           <span class="rh-tag">Zuzalu</span>
@@ -512,6 +512,17 @@ let videoReady = false;
 let seeking = false;
 let seekStartTime = 0;
 let needsDraw = true;
+let newFrameAvailable = false;
+
+// Use requestVideoFrameCallback where supported (Chrome/Edge)
+// Falls back to readyState check for Firefox
+if ('requestVideoFrameCallback' in HTMLVideoElement.prototype) {
+  function onVideoFrame() {
+    newFrameAvailable = true;
+    video.requestVideoFrameCallback(onVideoFrame);
+  }
+  video.requestVideoFrameCallback(onVideoFrame);
+}
 
 window.addEventListener('scroll', () => {
   const max = document.documentElement.scrollHeight - window.innerHeight;
@@ -551,8 +562,11 @@ function render() {
   }
 
   const isMoving = Math.abs(currentProgress - prevProgress) > 0.0001;
-  if (needsDraw || isMoving) {
+  // Only draw when we have a valid frame (fixes Firefox/Windows flickering)
+  const hasFrame = newFrameAvailable || video.readyState >= 3;
+  if ((needsDraw || isMoving) && hasFrame) {
     needsDraw = false;
+    newFrameAvailable = false;
     leftRenderer.draw();
     rightRenderer.draw();
   }
