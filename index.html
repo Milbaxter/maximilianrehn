@@ -264,6 +264,9 @@
       display: block;
     }
 
+    /* Keep section headings visible below the sticky header. */
+    [id] { scroll-margin-top: 90px; }
+
     /* Typography */
     h1 {
       font-family: 'Linux Libertine', Georgia, serif;
@@ -615,6 +618,13 @@
       #main-wrapper { border-left: none; border-right: none; padding: 20px 16px 60px; }
       .infobox { float: none; width: 100%; margin: 16px 0; }
       .principles-grid, .portals-grid { grid-template-columns: 1fr; }
+      .brand .tagline { display: none; }
+      .brand { gap: 6px; }
+      .brand .logo { font-size: 20px; }
+      .topbar-right { gap: 6px; }
+      .search-wrap { width: clamp(90px, 28vw, 140px); }
+      .pagehead { flex-wrap: wrap; }
+      .article-meta-badge { margin-left: 0; }
     }
   </style>
 </head>
@@ -630,7 +640,7 @@
     
     <div class="topbar-right">
       <div class="search-wrap">
-        <input type="search" id="wiki-search" class="search-input" placeholder="Search philosophies (press '/')..." autocomplete="off">
+        <input type="search" id="wiki-search" class="search-input" aria-label="Search Milipedia" placeholder="Search Milipedia..." autocomplete="off">
         <div id="search-dropdown" class="search-dropdown"></div>
       </div>
       <button class="theme-toggle" id="theme-btn" title="Toggle Light/Dark Theme">🌓</button>
@@ -645,30 +655,19 @@
         <ul class="sidebar-nav">
           <li><a href="#__main__" class="nav-item"><b>Main page</b></a></li>
           <li><a href="#mp-principles">Core Principles</a></li>
-          <li><a href="#mp-philosophies">Philosophies Index</a></li>
+          <li><a href="#mp-philosophies">Ideas Index</a></li>
           <li><a href="#mp-media">Writing &amp; Media</a></li>
         </ul>
       </div>
 
       <div class="sidebar-section">
-        <div class="sidebar-title">Philosophies (11)</div>
+        <div class="sidebar-title">Ideas (11)</div>
         <ul class="sidebar-nav" id="sidebar-philo-list">
-          <li><a href="#letting-go" class="nav-item" data-slug="letting-go">Letting Go</a></li><li><a href="#action-over-inaction" class="nav-item" data-slug="action-over-inaction">Action Over Inaction</a></li><li><a href="#inner-work-first" class="nav-item" data-slug="inner-work-first">Inner Work First</a></li><li><a href="#create-more-buddhas-per-capita" class="nav-item" data-slug="create-more-buddhas-per-capita">Create More Buddhas Per Capita</a></li><li><a href="#mind-constructs-reality" class="nav-item" data-slug="mind-constructs-reality">Mind Constructs Reality</a></li><li><a href="#life-philosophy-of-beauty" class="nav-item" data-slug="life-philosophy-of-beauty">Life Philosophy of Beauty</a></li><li><a href="#get-off-the-feed" class="nav-item" data-slug="get-off-the-feed">Get Off the Feed</a></li><li><a href="#education" class="nav-item" data-slug="education">Education Should Teach the Inner Life</a></li><li><a href="#personal-energy" class="nav-item" data-slug="personal-energy">Personal Energy as the Master Resource</a></li><li><a href="#metamodernism" class="nav-item" data-slug="metamodernism">Metamodernism</a></li><li><a href="#network-state" class="nav-item" data-slug="network-state">Network State &amp; Pop-Up Cities</a></li>
+          <li><a href="#letting-go" class="nav-item" data-slug="letting-go">Letting Go</a></li><li><a href="#action-over-inaction" class="nav-item" data-slug="action-over-inaction">Action Over Inaction</a></li><li><a href="#inner-work-first" class="nav-item" data-slug="inner-work-first">Inner Work First</a></li><li><a href="#create-more-buddhas-per-capita" class="nav-item" data-slug="create-more-buddhas-per-capita">Create More Buddhas Per Capita</a></li><li><a href="#mind-constructs-reality" class="nav-item" data-slug="mind-constructs-reality">Mind Constructs Reality</a></li><li><a href="#life-philosophy-of-beauty" class="nav-item" data-slug="life-philosophy-of-beauty">Life Philosophy of Beauty</a></li><li><a href="#get-off-the-feed" class="nav-item" data-slug="get-off-the-feed">Get Off the Feed</a></li><li><a href="#education" class="nav-item" data-slug="education">Education Should Teach the Inner Life</a></li><li><a href="#personal-energy" class="nav-item" data-slug="personal-energy">Personal Energy</a></li><li><a href="#metamodernism" class="nav-item" data-slug="metamodernism">Metamodernism</a></li><li><a href="#network-state" class="nav-item" data-slug="network-state">Network State &amp; Pop-Up Cities</a></li>
         </ul>
       </div>
 
-      <div class="sidebar-section">
-        <div class="sidebar-title">External Outlets</div>
-        <ul class="sidebar-nav">
-          <li><a href="https://maximilian-rehn.medium.com" target="_blank" rel="noopener">Medium Blog ↗</a></li>
-          <li><a href="https://maximilianrehn.substack.com" target="_blank" rel="noopener">Substack ↗</a></li>
-          <li><a href="https://youtube.com/@milimithrandir" target="_blank" rel="noopener">YouTube (@milimithrandir) ↗</a></li>
-          <li><a href="https://x.com/milimithrandir" target="_blank" rel="noopener">X (@milimithrandir) ↗</a></li>
-          <li><a href="https://instagram.com/milimithrandir" target="_blank" rel="noopener">Instagram (@milimithrandir) ↗</a></li>
-          <li><a href="https://github.com/Milbaxter" target="_blank" rel="noopener">GitHub (@Milbaxter) ↗</a></li>
-          <li><a href="https://linktr.ee/maximilianrehn" target="_blank" rel="noopener">Linktree Hub ↗</a></li>
-        </ul>
-      </div>
+      <div class="sidebar-section"><div class="sidebar-title">Elsewhere</div><ul class="sidebar-nav"><li><a href="#mp-media">Writing &amp; Media</a></li><li><a href="#mp-external">Contact &amp; Links</a></li></ul></div>
     </nav>
 
     <!-- Main Content Container -->
@@ -690,135 +689,93 @@
             </td>
           </tr>
           <tr><th colspan="2" class="ib-header">Personal Information</th></tr>
-          <tr><th>Born / Base</th><td>Helsinki, Finland</td></tr>
+          <tr><th>From</th><td>Helsinki, Finland</td></tr>
+          <tr><th>Based</th><td>On the move · Digital nomad</td></tr>
           <tr><th>Education</th><td><a href="https://www.aalto.fi/en/study-options/information-networks-master-of-science-technology" target="_blank" rel="noopener">Aalto University</a><br><small>(M.Sc. Information Networks, 2021)</small></td></tr>
           <tr><th>Military rank</th><td>Second Lieutenant<br><small>(Finnish Army Reserve)</small></td></tr>
-          <tr><th>Occupations</th><td>Builder · Writer · AI Researcher</td></tr>
+          <tr><th>Occupations</th><td>Software builder · Writer</td></tr>
           <tr><th>Languages</th><td>Swedish, Finnish, English</td></tr>
-          <tr><th>Interests</th><td>Neuroscience, AI, decentralized systems, longevity, BJJ, gym, yoga, human potential, racket sports, travel, books</td></tr>
+          <tr><th>Interests</th><td>AI, books, travel, BJJ, yoga, and racket sports</td></tr>
 
-          <tr><th colspan="2" class="ib-header">Connect &amp; Writing</th></tr>
-          <tr><th>Essays</th><td><a href="https://maximilian-rehn.medium.com" target="_blank" rel="noopener">Medium</a> · <a href="https://maximilianrehn.substack.com" target="_blank" rel="noopener">Substack</a></td></tr>
-          <tr><th>Video</th><td><a href="https://youtube.com/@milimithrandir" target="_blank" rel="noopener">YouTube (@milimithrandir)</a></td></tr>
-          <tr><th>Social</th><td><a href="https://x.com/milimithrandir" target="_blank" rel="noopener">X</a> · <a href="https://instagram.com/milimithrandir" target="_blank" rel="noopener">Instagram</a></td></tr>
-          <tr><th>All Links</th><td><a href="https://linktr.ee/maximilianrehn" target="_blank" rel="noopener">linktr.ee/maximilianrehn</a></td></tr>
         </table>
 
         <!-- Lead Introduction Section -->
-        <p><b>Maximilian "Mili" Rehn</b> is a Finnish writer, builder, and researcher based in Helsinki, currently exploring ideas across artificial intelligence, consciousness, and human potential. He holds a Master of Science in <a href="https://www.aalto.fi/en/study-options/information-networks-master-of-science-technology" target="_blank" rel="noopener">Information Networks</a> from Aalto University and serves as a Second Lieutenant in the Finnish Army Reserve.</p>
-
-        <p>Rehn shares his thinking through his <a href="https://maximilian-rehn.medium.com" target="_blank" rel="noopener">Medium essays</a>, <a href="https://maximilianrehn.substack.com" target="_blank" rel="noopener">Substack publication</a>, and <a href="https://youtube.com/@milimithrandir" target="_blank" rel="noopener">YouTube channel</a>. His background bridges competitive gaming (Global Elite in CS:GO, Legend in Hearthstone, Master in StarCraft II), a dedicated decade of inner work and contemplative inquiry, and building software tools and AI agents.</p>
-
-        <p>His foundational personal philosophies center on <a href="#letting-go">Letting Go</a>, <a href="#action-over-inaction">Action Over Inaction</a>, and <a href="#inner-work-first">Inner Work First</a>, operating under the long-standing aim to <a href="#create-more-buddhas-per-capita">Create More Buddhas Per Capita</a>.</p>
+        <p><b>Maximilian "Mili" Rehn</b> is a digital nomad from Helsinki, Finland. He builds software, experiments with AI, and writes about attention, books, and everyday life.</p>
+        <p>Milipedia collects his notes and the ideas he keeps returning to. Some come from books, some from practice, and some are still questions.</p>
+        <div class="article-summary-box"><b>Start here:</b> <a href="#letting-go">Letting Go</a> for an everyday practice, <a href="#network-state">Pop-Up Cities</a> for notes on living with a community, or <a href="#mp-media">Writing &amp; Media</a> for more to explore.</div>
 
         <!-- Table of Contents -->
         <div class="toc">
           <div class="toc-title">Contents</div>
           <ol>
             <li><a href="#mp-principles">Core Principles</a></li>
-            <li><a href="#mp-philosophies">Philosophies &amp; Frameworks</a></li>
+            <li><a href="#mp-philosophies">Ideas &amp; Notes</a></li>
             <li><a href="#mp-media">Writing &amp; Media</a></li>
-            <li><a href="#mp-external">External Links</a></li>
+            <li><a href="#mp-external">Contact &amp; Links</a></li>
           </ol>
         </div>
 
         <!-- Section 1: Core Principles -->
         <h2 id="mp-principles">Core Principles</h2>
-        <p>Rehn summarizes his operating heuristics into four core principles he keeps as daily reminders:</p>
+        <p>Four reminders Mili tries to put into practice:</p>
         
         <div class="principles-box">
           <div class="principles-grid">
             <div class="principle-card">
               <div class="principle-num">Principle 1</div>
               <div class="principle-title"><a href="#letting-go">Letting Go</a></div>
-              <div class="principle-desc">Keep the flow open and avoid getting caught in mental states. The reality is identifying with the change and keep letting go what is to make room for the flow.</div>
+              <div class="principle-desc">Notice when a thought or feeling takes over. Give it room, then return to what is in front of you.</div>
             </div>
             <div class="principle-card">
               <div class="principle-num">Principle 2</div>
               <div class="principle-title">Face and Move Toward Fear</div>
-              <div class="principle-desc">Lean into discomfort. What you resist often holds the clearest signal for breakthrough and personal expansion.</div>
+              <div class="principle-desc">Notice what you are avoiding. When it matters, try a small step toward it.</div>
             </div>
             <div class="principle-card">
               <div class="principle-num">Principle 3</div>
               <div class="principle-title"><a href="#action-over-inaction">Action Over Inaction</a></div>
-              <div class="principle-desc">Done beautifully. Fight entropy: today instead of tomorrow, speed compounds, and luck is a function of surface area.</div>
+              <div class="principle-desc">Start with something small. Learn by doing, and take care with the result.</div>
             </div>
             <div class="principle-card">
               <div class="principle-num">Principle 4</div>
               <div class="principle-title">Curiosity Instead of Critique</div>
-              <div class="principle-desc">Replace judgment with active inquiry. Seek to understand underlying dynamics before forming conclusions.</div>
+              <div class="principle-desc">Ask another question before deciding you have understood someone.</div>
             </div>
           </div>
         </div>
 
         <!-- Section 2: Philosophies & Frameworks Index -->
-        <h2 id="mp-philosophies">Philosophies &amp; Frameworks</h2>
-        <p>Selected essays and synthesized philosophical frameworks from Milipedia:</p>
+        <h2 id="mp-philosophies">Ideas &amp; Notes</h2>
+        <p>Short introductions to ideas in his writing, with examples and connections between them.</p>
 
         <div class="philo-directory">
-          <div class="philo-item">
-            <h4><a href="#letting-go">Letting Go</a></h4>
-            <p>Michael Singer-style non-attachment; beauty as emergent from releasing resistance rather than steering.</p>
-          </div>
-          <div class="philo-item">
-            <h4><a href="#action-over-inaction">Action Over Inaction</a></h4>
-            <p>Fighting entropy; velocity compounds, and surface area generates luck and serendipity.</p>
-          </div>
-          <div class="philo-item">
-            <h4><a href="#inner-work-first">Inner Work First</a></h4>
-            <p>The foundational decision at age 20: self-mastery precedes attempting to reorganize the world.</p>
-          </div>
-          <div class="philo-item">
-            <h4><a href="#create-more-buddhas-per-capita">Create More Buddhas Per Capita</a></h4>
-            <p>The Velcro vs. Teflon mind; why inner training is hard and five personal tools for cognitive sovereignty.</p>
-          </div>
-          <div class="philo-item">
-            <h4><a href="#mind-constructs-reality">Mind Constructs Reality</a></h4>
-            <p>Through-line since 2018: Harari, Zarathustra, Jung, Krishnamurti, predictive processing, and de Mello.</p>
-          </div>
-          <div class="philo-item">
-            <h4><a href="#life-philosophy-of-beauty">Life Philosophy of Beauty</a></h4>
-            <p>Life as an open game whose win condition is presence and the perception of beauty.</p>
-          </div>
-          <div class="philo-item">
-            <h4><a href="#get-off-the-feed">Get Off the Feed</a></h4>
-            <p>The anti-algorithm stance; distinguishing active creation from passive algorithmic consumption.</p>
-          </div>
-          <div class="philo-item">
-            <h4><a href="#education">Education Should Teach the Inner Life</a></h4>
-            <p>Critique of information-only schooling; proposal for mental and spiritual hygiene curricula.</p>
-          </div>
-          <div class="philo-item">
-            <h4><a href="#personal-energy">Personal Energy as the Master Resource</a></h4>
-            <p>Decisions priced in energy: why avoiding status games and conformity protects vitality.</p>
-          </div>
-          <div class="philo-item">
-            <h4><a href="#metamodernism">Metamodernism</a></h4>
-            <p>Hanzi Freinacht's "Listening Society" and integral theory: developmental-stage growth and politics.</p>
-          </div>
-          <div class="philo-item">
-            <h4><a href="#network-state">Network State</a></h4>
-            <p>Balaji Srinivasan's concept and the practical throughline behind pop-up cities and experimental governance.</p>
-          </div>
+          <div class="philo-item"><h4><a href="#letting-go">Letting Go</a></h4><p>Notice a difficult thought or feeling without getting pulled into it.</p></div>
+          <div class="philo-item"><h4><a href="#action-over-inaction">Action Over Inaction</a></h4><p>Start small, learn from doing, and take care with the work.</p></div>
+          <div class="philo-item"><h4><a href="#inner-work-first">Inner Work First</a></h4><p>Understand your own reactions while working on problems around you.</p></div>
+          <div class="philo-item"><h4><a href="#create-more-buddhas-per-capita">Create More Buddhas Per Capita</a></h4><p>Mili's shorthand for helping more people understand their minds and react less automatically.</p></div>
+          <div class="philo-item"><h4><a href="#mind-constructs-reality">Mind Constructs Reality</a></h4><p>How expectations and habits shape the way we experience the world.</p></div>
+          <div class="philo-item"><h4><a href="#life-philosophy-of-beauty">Life Philosophy of Beauty</a></h4><p>Make room for attention, enjoyment, and care alongside achievement.</p></div>
+          <div class="philo-item"><h4><a href="#get-off-the-feed">Get Off the Feed</a></h4><p>Choose what you want to read or make before a feed chooses for you.</p></div>
+          <div class="philo-item"><h4><a href="#education">Education Should Teach the Inner Life</a></h4><p>Make understanding thoughts, emotions, and attention part of learning.</p></div>
+          <div class="philo-item"><h4><a href="#personal-energy">Personal Energy</a></h4><p>Pay attention to what leaves you rested, engaged, or drained.</p></div>
+          <div class="philo-item"><h4><a href="#metamodernism">Metamodernism</a></h4><p>Take criticism seriously while still trying to build something worthwhile.</p></div>
+          <div class="philo-item"><h4><a href="#network-state">Network State &amp; Pop-Up Cities</a></h4><p>Notes on online communities that meet, live, and build things together.</p></div>
         </div>
 
         <!-- Section 3: Writing & Media -->
         <h2 id="mp-media">Writing &amp; Media</h2>
-        <p>Rehn produces written essays, vlogs, podcasts, and video reflections across several platforms:</p>
+        <p>Longer essays, videos, and conversations:</p>
         <ul>
-          <li><b><a href="https://maximilian-rehn.medium.com" target="_blank" rel="noopener">Medium Publication</a>:</b> 100+ essays exploring mental models, philosophy of beauty, books, and deliberate living.</li>
+          <li><b><a href="https://maximilian-rehn.medium.com" target="_blank" rel="noopener">Medium Publication</a>:</b> Essays about books, attention, and how to spend a life.</li>
           <li><b><a href="https://maximilianrehn.substack.com" target="_blank" rel="noopener">Substack Newsletter</a>:</b> Long-form essays, including reflections on pop-up cities and tech hubs.</li>
-          <li><b><a href="https://youtube.com/@milimithrandir" target="_blank" rel="noopener">YouTube (@milimithrandir)</a>:</b> Reflections on attention, AI, and inner development, alongside podcast conversations.</li>
+          <li><b><a href="https://youtube.com/@milimithrandir" target="_blank" rel="noopener">YouTube (@milimithrandir)</a>:</b> Videos and conversations about attention, AI, and personal experience.</li>
         </ul>
 
         <!-- Section 4: External Links -->
-        <h2 id="mp-external">External Links</h2>
+        <h2 id="mp-external">Contact &amp; Links</h2>
         <ul>
           <li><a href="https://x.com/milimithrandir" target="_blank" rel="noopener">X / Twitter (@milimithrandir)</a></li>
-          <li><a href="https://youtube.com/@milimithrandir" target="_blank" rel="noopener">YouTube (@milimithrandir)</a></li>
           <li><a href="https://instagram.com/milimithrandir" target="_blank" rel="noopener">Instagram (@milimithrandir)</a></li>
-          <li><a href="https://maximilian-rehn.medium.com" target="_blank" rel="noopener">Medium Blog</a></li>
-          <li><a href="https://maximilianrehn.substack.com" target="_blank" rel="noopener">Substack Newsletter</a></li>
           <li><a href="https://github.com/Milbaxter" target="_blank" rel="noopener">GitHub (@Milbaxter)</a></li>
           <li><a href="https://linktr.ee/maximilianrehn" target="_blank" rel="noopener">Linktree Hub</a></li>
         </ul>
@@ -827,501 +784,203 @@
       <!-- INDIVIDUAL PHILOSOPHY ARTICLES -->
       
     <article id="letting-go" class="wiki-article">
-      <div class="pagehead">
-        <h1>Letting Go</h1>
-        <div class="article-meta-badge"><span class="badge philosophy">Core Philosophy</span></div>
-      </div>
-      <div class="subtitle">From Milipedia, the free personal knowledge base of Maximilian Rehn</div>
-      
-      <div class="article-summary-box">
-        <b>Summary:</b> Mili&#x27;s core life philosophy inspired by Michael Singer: releasing internal resistance so that thought and emotion flow freely, allowing beauty to emerge naturally.
-      </div>
-
+      <div class="pagehead"><h1>Letting Go</h1><div class="article-meta-badge"><span class="badge philosophy">Everyday Practice</span></div></div>
+      <div class="subtitle">From Milipedia, the personal knowledge base of Maximilian Rehn</div>
+      <div class="article-summary-box"><b>Summary:</b> Notice a difficult thought or feeling without getting pulled into it.</div>
       <div class="article-body">
-        
-<p><b>Letting Go</b> represents Maximilian Rehn's primary and foundational life philosophy: a stance of non-attachment derived from the work of Michael Singer (<i>The Untethered Soul</i>, <i>The Surrender Experiment</i>). The practice centers on "being that flow of ideas and emotions that becomes beautiful when we are not too attached to things."</p>
-
-<h2>Relationship to the Philosophy of Beauty</h2>
-<p>This framework reframes and deepens Rehn's earlier <a href="#life-philosophy-of-beauty">Philosophy of Beauty</a>. While the beauty philosophy treated beauty as an active compass to steer by, the letting-go framework treats beauty as <i>emergent</i>: it is what experience naturally resolves into once internal grasping and resistance are released. The active effort shifts from constantly striving toward beauty to dropping the tension that obstructs it.</p>
-<p>It forms the first of his four operational principles: <i>letting go, keeping the flow open, and refusing to get caught in negativity.</i></p>
-
-<h2>Intellectual Lineage</h2>
-<p>The primary named source is <a href="https://untetheredsoul.com" target="_blank" rel="noopener">Michael A. Singer</a>, alongside contemplative influences including Jiddu Krishnamurti, Anthony de Mello, and David R. Hawkins. The through-line in Rehn's writing dates back to a May 2022 essay examining the "seat of consciousness"—the practice of remaining anchored as the witness of internal states rather than closing the heart against uncomfortable moments.</p>
-<p>It also synthesizes insights from Eastern non-dual traditions: treating thoughts and feelings as transient energetic events rather than permanent definitions of the self, and cultivating a steady center amid chaotic external conditions.</p>
-
-<h2>Practical Application</h2>
-<p>In daily practice, Rehn articulates the technique not as a passive surrender, but as active micro-releases throughout the day:</p>
-<ul>
-  <li><b>Micro-surrenders:</b> Recognizing that letting go is rarely one monumental breakthrough; it consists of dozens of small releases of tightness in ordinary moments.</li>
-  <li><b>The Center of the Storm:</b> Viewing energy, emotions, and thoughts as a river in constant motion, while maintaining a centered vantage point that allows them to pass without interference.</li>
-  <li><b>Intermittent Awareness:</b> Treating the state not as an impossible standard of constant perfection, but as an ongoing baseline to return to whenever tension is noticed.</li>
-</ul>
-
-<h2>See Also</h2>
-<ul>
-  <li><a href="#life-philosophy-of-beauty">Life Philosophy of Beauty</a> — The teleological counterpart: presence as the ultimate win condition.</li>
-  <li><a href="#inner-work-first">Inner Work First</a> — The foundational priority of internal mastery over external manipulation.</li>
-  <li><a href="#mind-constructs-reality">Mind Constructs Reality</a> — The cognitive architecture underlying subjective perception.</li>
-</ul>
-
+<p><b>Letting Go</b> is a practice Mili returns to often: noticing thoughts and feelings without holding on to them or immediately acting on them. It draws on Michael Singer's <i>The Untethered Soul</i> and <i>The Surrender Experiment</i>.</p>
+<h2>What it means</h2>
+<p>A frustrating conversation can keep playing in the mind long after it ends. Letting go means noticing that replay, allowing the discomfort to be there, and returning attention to what is happening now. The practical problem may still need a response.</p>
+<h2>Practicing it</h2>
+<ul><li>Notice when the body tightens or the same thought keeps returning.</li><li>Give the feeling some room before deciding what to do.</li><li>Return to the conversation, task, or surroundings in front of you.</li></ul>
+<p>The aim is a habit of returning, rather than staying calm all the time.</p>
+<h2>Connections</h2>
+<p>This connects to <a href="#life-philosophy-of-beauty">Life Philosophy of Beauty</a>: less time caught in an argument with reality can leave more room to notice it. Other influences include <a href="https://untetheredsoul.com" target="_blank" rel="noopener">Michael Singer</a>, Jiddu Krishnamurti, Anthony de Mello, and David R. Hawkins.</p>
       </div>
-
-      <div class="catlinks">
-        <b>Category:</b> <a href="#__main__">Philosophies &amp; Frameworks</a> &middot; <b>Related Articles:</b> <a href="#action-over-inaction">Action Over Inaction</a> · <a href="#inner-work-first">Inner Work First</a> · <a href="#create-more-buddhas-per-capita">Create More Buddhas Per Capita</a>
-      </div>
-
-      <div class="article-footer">
-        <a href="#__main__" class="back-link">← Return to Main Page</a>
-      </div>
+      <div class="catlinks"><b>Category:</b> <a href="#mp-philosophies">Ideas &amp; Notes</a> &middot; <b>Related Articles:</b> <a href="#inner-work-first">Inner Work First</a> · <a href="#life-philosophy-of-beauty">Life Philosophy of Beauty</a></div>
+      <div class="article-footer"><a href="#__main__" class="back-link">← Return to Main Page</a></div>
     </article>
     
     <article id="action-over-inaction" class="wiki-article">
-      <div class="pagehead">
-        <h1>Action Over Inaction</h1>
-        <div class="article-meta-badge"><span class="badge philosophy">Operating Principle</span></div>
-      </div>
-      <div class="subtitle">From Milipedia, the free personal knowledge base of Maximilian Rehn</div>
-      
-      <div class="article-summary-box">
-        <b>Summary:</b> Action done beautifully. Fighting entropy, recognizing that motivation follows action, and expanding luck by increasing surface area.
-      </div>
-
+      <div class="pagehead"><h1>Action Over Inaction</h1><div class="article-meta-badge"><span class="badge philosophy">Everyday Practice</span></div></div>
+      <div class="subtitle">From Milipedia, the personal knowledge base of Maximilian Rehn</div>
+      <div class="article-summary-box"><b>Summary:</b> Start small, learn from doing, and take care with the work.</div>
       <div class="article-body">
-        
-<p><b>Action Over Inaction</b> is one of Rehn's core operating principles: when faced with uncertainty, prioritize action over passive deliberation, and execute it with aesthetic care. The principle rests on three interlocking premises: fighting entropy, the compounding power of velocity, and luck as a mathematical function of experiential surface area.</p>
-
-<h2>The Entropy Premise</h2>
-<p>Drawing on thermodynamics and information theory, inaction is framed as a default descent into disorder and stagnation. Living systems must continuously expend deliberate energy to stave off decay. Taking immediate, focused action is the primary counterweight against mental inertia and systemic entropy.</p>
-
-<h2>The 'Do Something' Principle &amp; Motivation</h2>
-<p>In his 2020 essay series, Rehn analyzed the psychological mechanics of starting. Drawing on Mark Manson, he emphasizes that <i>motivation does not precede action; motivation follows action</i>. Starting—even with an imperfect draft, a small prototype, or a simple physical movement—generates the emotional resonance and clarity required to continue.</p>
-<p>This is paired with an active strategy regarding embarrassment: fear of looking awkward or failing in public is a cheap tax that keeps most people paralyzed. Spending down that fear through low-stakes public building and open exploration yields outsized experiential returns.</p>
-
-<h2>Surface Area Generates Luck</h2>
-<p>Influenced by Nassim Taleb's concepts of optionality and antifragility, Rehn formulates luck as a function of surface area. Inaction yields zero surface area, whereas publishing essays, shipping software prototypes, attending conferences, and initiating conversations create asymmetric upside where unforeseen positive serendipity can occur.</p>
-
-<h2>The Counterweight: Festina Lente</h2>
-<p>Rehn balances pure execution speed with the classical Roman adage <i>Festina Lente</i> ("make haste slowly"):</p>
-<blockquote><p>"Urgency because life is short and no day should be wasted; slowness because otherwise the depth of the journey is missed."</p></blockquote>
-<p>The goal is not frantic busywork, but deliberate velocity paired with deep presence.</p>
-
-<h2>Key Decision Algorithms</h2>
-<ul>
-  <li><b>Now over Later:</b> Address resistance immediately before friction accumulates.</li>
-  <li><b>Direction over Destination:</b> Decouple satisfaction from far-off goals so that every forward movement feels intrinsically rewarding.</li>
-  <li><b>Action with Beauty:</b> Execute with craft, proportion, and attention to detail.</li>
-</ul>
-
+<p><b>Action Over Inaction</b> is Mili's reminder to take a useful first step when planning starts going in circles.</p>
+<h2>Starting helps</h2>
+<p>Motivation can follow action. Writing a rough paragraph or building a small prototype often makes the next step clearer. Mark Manson's “do something” principle is one influence.</p>
+<p>Sharing unfinished work can also make embarrassment easier to handle. A small experiment gives you something real to learn from.</p>
+<h2>Making room for chance</h2>
+<p>Publishing, meeting people, and trying projects create more chances for unexpected opportunities. Mili connects this with Nassim Taleb's writing on keeping options open. There is no formula that guarantees luck.</p>
+<h2>Make haste slowly</h2>
+<p>The phrase <i>festina lente</i>, or “make haste slowly,” captures the balance: get moving while giving the work enough attention to do it well.</p>
+<ul><li>Choose one small step you can take today.</li><li>Pick a direction worth following, even if the destination is unclear.</li><li>Leave time to notice mistakes and improve the result.</li></ul>
       </div>
-
-      <div class="catlinks">
-        <b>Category:</b> <a href="#__main__">Philosophies &amp; Frameworks</a> &middot; <b>Related Articles:</b> <a href="#letting-go">Letting Go</a> · <a href="#inner-work-first">Inner Work First</a> · <a href="#create-more-buddhas-per-capita">Create More Buddhas Per Capita</a>
-      </div>
-
-      <div class="article-footer">
-        <a href="#__main__" class="back-link">← Return to Main Page</a>
-      </div>
+      <div class="catlinks"><b>Category:</b> <a href="#mp-philosophies">Ideas &amp; Notes</a> &middot; <b>Related Articles:</b> <a href="#inner-work-first">Inner Work First</a> · <a href="#personal-energy">Personal Energy</a></div>
+      <div class="article-footer"><a href="#__main__" class="back-link">← Return to Main Page</a></div>
     </article>
     
     <article id="inner-work-first" class="wiki-article">
-      <div class="pagehead">
-        <h1>Inner Work First</h1>
-        <div class="article-meta-badge"><span class="badge philosophy">Foundational Philosophy</span></div>
-      </div>
-      <div class="subtitle">From Milipedia, the free personal knowledge base of Maximilian Rehn</div>
-      
-      <div class="article-summary-box">
-        <b>Summary:</b> The foundational decision made at age 20: internal clarity must precede external ambition, because one&#x27;s internal state colors every endeavor.
-      </div>
-
+      <div class="pagehead"><h1>Inner Work First</h1><div class="article-meta-badge"><span class="badge philosophy">Self-understanding</span></div></div>
+      <div class="subtitle">From Milipedia, the personal knowledge base of Maximilian Rehn</div>
+      <div class="article-summary-box"><b>Summary:</b> Understand your own reactions while working on problems around you.</div>
       <div class="article-body">
-        
-<p><b>Inner Work First</b> is the foundational premise of Rehn's adult life: the deliberate choice to cultivate self-awareness, emotional sovereignty, and mental clarity before attempting to reorganize society or pursue high-stakes external conquests.</p>
-
-<h2>The Origin and Inversion</h2>
-<p>During a solo Interrail journey across Europe at age 20, Rehn initially filled notebooks with lists of societal flaws and ambitious systemic reforms. Mid-journey, influenced by Jiddu Krishnamurti's dialogues on the conditioning of thought, he recognized an inversion: fixing outer systems while operating from internal confusion and unexamined ego invariably replicates the very problems one seeks to solve.</p>
-<p>He formulated this using an optimization metaphor: <i>"The best build and combination for set pieces early in life is to optimize the internal state first."</i></p>
-
-<h2>The Diagnostic: The World as a Reflection of Inner Chaos</h2>
-<p>In published essays including <i>"Don't change the world before you understand yourself"</i> and <i>"The Greatest Problem Facing Humanity,"</i> Rehn argues that external crises in politics, economics, and culture are symptoms of unprocessed human psychology:</p>
-<ul>
-  <li><b>Unconscious Action:</b> Unaware actors with noble intentions often cause collateral damage, bending external environments to soothe unexamined personal anxieties.</li>
-  <li><b>Institutional Decay:</b> When human consciousness remains reactive, political systems devolve into status games, economic structures into narrow greed, and philosophical movements into dogma.</li>
-  <li><b>Durability of Internal Skills:</b> While technical stacks, economic paradigms, and career markets fluctuate rapidly, metacognitive mastery, emotional stability, and self-honesty remain permanently applicable across all conditions.</li>
-</ul>
-
-<h2>Core Practices</h2>
-<p>Rehn's execution of this philosophy emphasizes:</p>
-<ol>
-  <li><b>Dedicated Contemplative Practice:</b> Daily meditation (Transcendental Meditation and mindfulness) to observe the mechanics of thought without immediate identification.</li>
-  <li><b>Intellectual Grounding:</b> Reading primary philosophical and psychological texts before leaping to intuitive conclusions.</li>
-  <li><b>Physical Foundations:</b> Treating somatic health (sleep, nutrition, Brazilian Jiu-Jitsu, yoga) as the non-negotiable physical substrate for cognitive clarity.</li>
-</ol>
-
+<p><b>Inner Work First</b> is Mili's belief that understanding his own motives and reactions helps him make better choices.</p>
+<h2>Where it started</h2>
+<p>On a solo Interrail trip through Europe at twenty, he filled notebooks with ideas about what was wrong with society. Reading Jiddu Krishnamurti prompted another question: how much of his desire to change things came from frustration he had not examined?</p>
+<h2>What it means in practice</h2>
+<p>Before starting a project or entering an argument, it can help to ask what is driving it: curiosity, fear, approval, or a problem that needs solving. Mixed motives are normal; noticing them gives you more choice.</p>
+<ul><li>Meditation offers time to observe thoughts without immediately following them.</li><li>Reading gives personal intuitions something to be tested against.</li><li>Sleep, movement, and rest support the ability to pay attention.</li></ul>
+<h2>A useful balance</h2>
+<p>Self-reflection can become another way to postpone things. This idea sits alongside <a href="#action-over-inaction">Action Over Inaction</a>: learn about yourself while participating in the world.</p>
       </div>
-
-      <div class="catlinks">
-        <b>Category:</b> <a href="#__main__">Philosophies &amp; Frameworks</a> &middot; <b>Related Articles:</b> <a href="#letting-go">Letting Go</a> · <a href="#action-over-inaction">Action Over Inaction</a> · <a href="#create-more-buddhas-per-capita">Create More Buddhas Per Capita</a>
-      </div>
-
-      <div class="article-footer">
-        <a href="#__main__" class="back-link">← Return to Main Page</a>
-      </div>
+      <div class="catlinks"><b>Category:</b> <a href="#mp-philosophies">Ideas &amp; Notes</a> &middot; <b>Related Articles:</b> <a href="#letting-go">Letting Go</a> · <a href="#action-over-inaction">Action Over Inaction</a></div>
+      <div class="article-footer"><a href="#__main__" class="back-link">← Return to Main Page</a></div>
     </article>
     
     <article id="create-more-buddhas-per-capita" class="wiki-article">
-      <div class="pagehead">
-        <h1>Create More Buddhas Per Capita</h1>
-        <div class="article-meta-badge"><span class="badge philosophy">Vision &amp; Metacognition</span></div>
-      </div>
-      <div class="subtitle">From Milipedia, the free personal knowledge base of Maximilian Rehn</div>
-      
-      <div class="article-summary-box">
-        <b>Summary:</b> A core public tenet and long-standing bio: cultivating minds that experience thoughts without sticking, building the mental immunity required for a free society.
-      </div>
-
+      <div class="pagehead"><h1>Create More Buddhas Per Capita</h1><div class="article-meta-badge"><span class="badge philosophy">Attention &amp; Awareness</span></div></div>
+      <div class="subtitle">From Milipedia, the personal knowledge base of Maximilian Rehn</div>
+      <div class="article-summary-box"><b>Summary:</b> Mili's shorthand for helping more people understand their minds and react less automatically.</div>
       <div class="article-body">
-        
-<p><b>"Create More Buddhas Per Capita"</b> has served as Rehn's public bio and defining aspirational phrase for over five years. It synthesizes his contemplative inquiry and political philosophy into a single objective: upgrading the average level of conscious awareness and psychological resilience across individuals in society.</p>
-
-<h2>The Velcro and Teflon Mind Metaphor</h2>
-<p>In an essay articulating the thesis, Rehn contrasts two cognitive operating modes:</p>
-<ul>
-  <li><b>The Velcro Mind:</b> For an untrained mind, every passing negative stimulus, provocative headline, or emotional impulse sticks immediately. It entangles with adjacent memories and insecurities, compounding into prolonged rumination, anxiety, or resentment.</li>
-  <li><b>The Teflon Mind:</b> For a trained mind, emotions and thoughts arise, deliver their immediate physiological signal (often lasting only 60 to 90 seconds biochemically), and slip away without leaving psychological residue. The mind does not build an elaborate narrative around the sensation.</li>
-</ul>
-
-<h2>The Modern Environmental Challenge</h2>
-<p>Rehn observes that while historical contemplative traditions developed within monasteries, forests, and supportive communal cloisters, modern individuals must cultivate cognitive sovereignty inside an environment engineered for the opposite:</p>
-<ul>
-  <li><b>Attention Extraction:</b> Algorithmic feeds optimized for outrage, status comparison, and emotional contagion.</li>
-  <li><b>Manufactured Desire:</b> Economic structures that leverage feelings of inadequacy to drive consumer behavior.</li>
-  <li><b>Cognitive Fragmentation:</b> Digital hyper-connectivity disrupting continuous contemplation and deep reflection.</li>
-</ul>
-
-<h2>Five Personal Tools for Mind Training</h2>
-<p>Rehn outlines five practical instruments for cultivating psychological freedom:</p>
-<ol>
-  <li><b>Metacognition:</b> Stepping into the observer vantage point to watch mental chatter without mistaking thoughts for objective facts.</li>
-  <li><b>Meditation:</b> Anchoring attention on the breath or mantra to build attentional stability.</li>
-  <li><b>Cosmic Perspective:</b> Zooming out to astronomical scales to contextualize transient daily frictions.</li>
-  <li><b>Constructive Action:</b> Actively pivoting energy toward life-affirming creative projects rather than brooding.</li>
-  <li><b>Compassionate Self-Correction:</b> Acknowledging human evolutionary wiring with patience while steadily upgrading daily habits.</li>
-</ol>
-
-<h2>The Civilizational Argument</h2>
-<p>In <i>"A society asleep is a ticking time bomb,"</i> Rehn argues that widespread self-knowledge is an indispensable civilizational safeguard. A population lacking metacognitive sovereignty is inherently vulnerable to mass panic, demagoguery, and ideological contagion. Genuine democratic freedom depends on citizens who possess internal clarity and can trust their own critical perception.</p>
-
+<p><b>Create More Buddhas Per Capita</b> is a phrase Mili has used in his bio. It expresses a hope that more people can learn to notice their thoughts, question their reactions, and feel less pushed around by them.</p>
+<h2>The sticky-mind metaphor</h2>
+<p>A thought can behave like Velcro: one upsetting comment catches on old worries and becomes an afternoon of replaying it. The contrasting image is Teflon, where a thought is noticed and allowed to pass. These are metaphors for a practice, not two kinds of people.</p>
+<h2>Things that can help</h2>
+<ol><li><b>Notice the thought.</b> Ask whether it is a fact, an interpretation, or a worry.</li><li><b>Practice attention.</b> Return to the breath or a meditation practice when distracted.</li><li><b>Zoom out.</b> Consider how much this problem may matter with some distance.</li><li><b>Do something useful.</b> Give attention to a task rather than another round of brooding.</li><li><b>Be patient.</b> Habits take repetition to change.</li></ol>
+<h2>Why it matters beyond the individual</h2>
+<p>Mili's broader argument is that people who can pause and question their reactions may be harder to manipulate. His essay <i>A society asleep is a ticking time bomb</i> explores that concern. It is a political hope behind the phrase, rather than a promise that meditation solves social problems.</p>
       </div>
-
-      <div class="catlinks">
-        <b>Category:</b> <a href="#__main__">Philosophies &amp; Frameworks</a> &middot; <b>Related Articles:</b> <a href="#letting-go">Letting Go</a> · <a href="#action-over-inaction">Action Over Inaction</a> · <a href="#inner-work-first">Inner Work First</a>
-      </div>
-
-      <div class="article-footer">
-        <a href="#__main__" class="back-link">← Return to Main Page</a>
-      </div>
+      <div class="catlinks"><b>Category:</b> <a href="#mp-philosophies">Ideas &amp; Notes</a> &middot; <b>Related Articles:</b> <a href="#letting-go">Letting Go</a> · <a href="#education">Education Should Teach the Inner Life</a></div>
+      <div class="article-footer"><a href="#__main__" class="back-link">← Return to Main Page</a></div>
     </article>
     
     <article id="mind-constructs-reality" class="wiki-article">
-      <div class="pagehead">
-        <h1>Mind Constructs Reality</h1>
-        <div class="article-meta-badge"><span class="badge philosophy">Epistemology</span></div>
-      </div>
-      <div class="subtitle">From Milipedia, the free personal knowledge base of Maximilian Rehn</div>
-      
-      <div class="article-summary-box">
-        <b>Summary:</b> A multi-year synthesis of neuroscience, cognitive science, and philosophy: subjective reality is generated by internal generative models that can be examined and reprogrammed.
-      </div>
-
+      <div class="pagehead"><h1>Mind Constructs Reality</h1><div class="article-meta-badge"><span class="badge philosophy">Perception &amp; Beliefs</span></div></div>
+      <div class="subtitle">From Milipedia, the personal knowledge base of Maximilian Rehn</div>
+      <div class="article-summary-box"><b>Summary:</b> How expectations and habits shape the way we experience the world.</div>
       <div class="article-body">
-        
-<p><b>Mind Constructs Reality</b> is a persistent through-line across Rehn's writing and research: human experience is not a passive recording of objective external events, but an active, top-down construction generated by the brain's internal models, cultural conditioning, and perceptual filters.</p>
-
-<h2>Key Frameworks in the Synthesis</h2>
-<div class="wikitable">
-  <table style="width:100%; border-collapse:collapse;">
-    <tr><th>Framework / Source</th><th>Core Insight Adopted</th></tr>
-    <tr><td><b>Predictive Processing</b><br><small>(Cognitive Science)</small></td><td>The brain is a predictive engine. Perception is a generative top-down best guess, with sensory inputs functioning primarily as error-correction signals.</td></tr>
-    <tr><td><b>Anthony de Mello</b><br><small>(Awareness)</small></td><td>Beliefs and rigid labels harden perception, preventing direct moment-to-moment appreciation of reality.</td></tr>
-    <tr><td><b>Sam Harris</b><br><small>(Neuroscience / Waking Up)</small></td><td>The feeling of a rigid, separate 'self' behind the eyes is an illusion; conscious awareness is simply the space in which experience occurs.</td></tr>
-    <tr><td><b>Jiddu Krishnamurti</b></td><td>The conditioned intellect operates within verbal boundaries; direct insight occurs when internal chatter subsides.</td></tr>
-    <tr><td><b>Hanzi Freinacht / Ken Wilber</b><br><small>(Integral Theory)</small></td><td>Human cognitive and emotional capacities mature through distinct developmental stages, expanding perceptual bandwidth.</td></tr>
-  </table>
-</div>
-
-<h2>Instrumental Belief: Frames as Tools</h2>
-<p>In his essay <i>"A New Way to Think,"</i> Rehn proposes an instrumental approach to worldviews: human minds are not bound to cling dogmatically to a single rigid model. Just as physics utilizes both wave and particle models depending on the problem, individuals can adopt specific mental frameworks based on their utility and life-affirming outcomes.</p>
-<p>For example, one might recognize determinism at a physical level while deliberately cultivating strong personal agency to ensure vigorous, ethical action in daily life.</p>
-
-<h2>The Constructive Takeaway</h2>
-<p>If subjective reality is constructed from within, upgrading internal interpretations, emotional hygiene, and attentional habits is the highest-leverage intervention available for human well-being and creative output.</p>
-
+<p><b>Mind Constructs Reality</b> brings together Mili's notes on perception, beliefs, and attention. The central question is how much our expectations affect what we notice and how we interpret it.</p>
+<h2>Ideas behind the question</h2>
+<table class="wikitable"><tr><th>Source or idea</th><th>What Mili takes from it</th></tr>
+<tr><td>Predictive processing</td><td>A way of understanding perception in which the brain combines expectations with incoming sensory information.</td></tr>
+<tr><td>Anthony de Mello</td><td>Familiar labels can keep us from looking closely at what is in front of us.</td></tr>
+<tr><td>Sam Harris</td><td>An invitation to examine the feeling of being a separate observer of experience.</td></tr>
+<tr><td>Jiddu Krishnamurti</td><td>Questions about how learned habits shape thought.</td></tr>
+<tr><td>Hanzi Freinacht and Ken Wilber</td><td>Frameworks for thinking about how people's perspectives change as they develop.</td></tr></table>
+<p>These sources include scientific models and philosophical interpretations. They approach different questions and do not establish a single explanation of the mind.</p>
+<h2>Beliefs as tools</h2>
+<p>In <i>A New Way to Think</i>, Mili explores using more than one perspective on a problem. A useful perspective can open up a choice, but usefulness alone does not make a belief true.</p>
+<h2>An everyday example</h2>
+<p>A short message might read as rude when you are tired and ordinary the next morning. Asking what else could explain it is a small way to check an interpretation before acting on it.</p>
       </div>
-
-      <div class="catlinks">
-        <b>Category:</b> <a href="#__main__">Philosophies &amp; Frameworks</a> &middot; <b>Related Articles:</b> <a href="#letting-go">Letting Go</a> · <a href="#action-over-inaction">Action Over Inaction</a> · <a href="#inner-work-first">Inner Work First</a> · <a href="#create-more-buddhas-per-capita">Create More Buddhas Per Capita</a>
-      </div>
-
-      <div class="article-footer">
-        <a href="#__main__" class="back-link">← Return to Main Page</a>
-      </div>
+      <div class="catlinks"><b>Category:</b> <a href="#mp-philosophies">Ideas &amp; Notes</a> &middot; <b>Related Articles:</b> <a href="#inner-work-first">Inner Work First</a> · <a href="#metamodernism">Metamodernism</a></div>
+      <div class="article-footer"><a href="#__main__" class="back-link">← Return to Main Page</a></div>
     </article>
     
     <article id="life-philosophy-of-beauty" class="wiki-article">
-      <div class="pagehead">
-        <h1>Life Philosophy of Beauty</h1>
-        <div class="article-meta-badge"><span class="badge philosophy">Teleology &amp; Aesthetics</span></div>
-      </div>
-      <div class="subtitle">From Milipedia, the free personal knowledge base of Maximilian Rehn</div>
-      
-      <div class="article-summary-box">
-        <b>Summary:</b> Life as an open-ended game where the win condition is present-moment awareness and the perception of beauty, especially as AI graduates humanity from mechanical achievement.
-      </div>
-
+      <div class="pagehead"><h1>Life Philosophy of Beauty</h1><div class="article-meta-badge"><span class="badge philosophy">Beauty &amp; Daily Life</span></div></div>
+      <div class="subtitle">From Milipedia, the personal knowledge base of Maximilian Rehn</div>
+      <div class="article-summary-box"><b>Summary:</b> Make room for attention, enjoyment, and care alongside achievement.</div>
       <div class="article-body">
-        
-<p>The <b>Life Philosophy of Beauty</b> is Rehn's 2026 written treatise on existential purpose and human teleology. It posits that life is an open game whose win condition is self-authored, and that presence and the appreciation of beauty represent the highest expressions of conscious existence.</p>
-
-<h2>Graduating from the Achievement Game</h2>
-<p>Rehn analyzes the historical win conditions of human society—primarily external achievement, wealth accumulation, and mechanical productivity. As artificial intelligence and automation progressively outperform human capabilities in analytical and productive tasks, the traditional justification for human worth based solely on external output dissolves.</p>
-<blockquote><p>"We are not rejecting the achievement game. We are being graduated from it."</p></blockquote>
-<p>What remains after this graduation is internal reality: the capacity for conscious presence, direct subjective experience, and aesthetic resonance.</p>
-
-<h2>Inner Freedom as the Prerequisite</h2>
-<p>In <i>"Wednesday Morning Life Philosophy,"</i> Rehn establishes that beauty cannot serve as a compass for an unfree mind. Freedom entails liberation from compulsive mental busywork, fear-driven striving, and reactive conditioning. True leisure in an unfree mind produces anxiety; in a free mind, it yields creative expression, philosophical depth, and communion.</p>
-
-<h2>Beauty as a Practical Decision Instrument</h2>
-<p>Rather than treating beauty as an abstract art theory, Rehn applies it as a daily operational heuristic across practical domains:</p>
-<ul>
-  <li><b>In Communication:</b> Finding the organic rhythm of conversation, where each person takes up exact space without competition.</li>
-  <li><b>In Physical Practice:</b> Pursuing flow, long exchanges, and graceful movement over rigid point-scoring.</li>
-  <li><b>In Daily Decisions:</b> Asking: <i>"What would be the most beautiful, elegant course of action here?"</i></li>
-</ul>
-<p>This formulation echoes Friedrich Schiller's concept of the <i>play drive</i> (Spieltrieb): the synthesis of necessity and freedom, where one acts out of genuine joy and artistic integrity.</p>
-
+<p><b>Life Philosophy of Beauty</b> explores what makes a day worthwhile beyond getting things done. Mili uses beauty broadly: a good conversation, a graceful movement, or something made with care.</p>
+<h2>Beyond achievement</h2>
+<p>His writing asks what happens to our sense of purpose as AI can do more of the work people once measured themselves by. One response he explores is to give more attention to the experience of living, alongside what we produce.</p>
+<h2>Beauty in ordinary choices</h2>
+<ul><li><b>Conversation:</b> Leave room for the other person and follow what is interesting.</li><li><b>Sport:</b> Enjoy the movement and the exchange as well as the score.</li><li><b>Work:</b> Take care with a small detail someone else will encounter.</li></ul>
+<p>The guiding question is what would make the moment more thoughtful, enjoyable, or well made.</p>
+<h2>Making room for it</h2>
+<p>Constant worry and comparison can make free time hard to enjoy. This is where the idea connects with <a href="#letting-go">Letting Go</a>. Mili also relates it to Friedrich Schiller's writing on play: acting with freedom and enjoyment.</p>
       </div>
-
-      <div class="catlinks">
-        <b>Category:</b> <a href="#__main__">Philosophies &amp; Frameworks</a> &middot; <b>Related Articles:</b> <a href="#letting-go">Letting Go</a> · <a href="#action-over-inaction">Action Over Inaction</a> · <a href="#inner-work-first">Inner Work First</a> · <a href="#create-more-buddhas-per-capita">Create More Buddhas Per Capita</a>
-      </div>
-
-      <div class="article-footer">
-        <a href="#__main__" class="back-link">← Return to Main Page</a>
-      </div>
+      <div class="catlinks"><b>Category:</b> <a href="#mp-philosophies">Ideas &amp; Notes</a> &middot; <b>Related Articles:</b> <a href="#letting-go">Letting Go</a> · <a href="#personal-energy">Personal Energy</a></div>
+      <div class="article-footer"><a href="#__main__" class="back-link">← Return to Main Page</a></div>
     </article>
     
     <article id="get-off-the-feed" class="wiki-article">
-      <div class="pagehead">
-        <h1>Get Off the Feed</h1>
-        <div class="article-meta-badge"><span class="badge philosophy">Attention &amp; Culture</span></div>
-      </div>
-      <div class="subtitle">From Milipedia, the free personal knowledge base of Maximilian Rehn</div>
-      
-      <div class="article-summary-box">
-        <b>Summary:</b> The argument against passive algorithmic scrolling, protecting cognitive sovereignty, and embracing the producer-over-consumer mindset.
-      </div>
-
+      <div class="pagehead"><h1>Get Off the Feed</h1><div class="article-meta-badge"><span class="badge philosophy">Attention &amp; Technology</span></div></div>
+      <div class="subtitle">From Milipedia, the personal knowledge base of Maximilian Rehn</div>
+      <div class="article-summary-box"><b>Summary:</b> Choose what you want to read or make before a feed chooses for you.</div>
       <div class="article-body">
-        
-<p><b>Get Off the Feed</b> is Rehn's most frequent public commentary on technology: algorithmic recommendation feeds (X, TikTok, Instagram Reels, YouTube Shorts) are fundamentally extractive to human agency, deep focus, and original thinking.</p>
-
-<h2>The Passivity Problem</h2>
-<p>First articulated in his 2020 essay <i>"Skip the feed,"</i> Rehn pinpoints the structural defect of modern feeds: their complete passivity. When an algorithm chooses what you see next based on engagement metrics (which disproportionately reward outrage, novelty, and sensationalism), attention is fragmented and the mind is placed into a reactive, low-energy state.</p>
-<p>In contrast, deliberate information acquisition—reading a complete book, searching specifically for a technical solution, or engaging in deep dialogue—builds durable neural connections and genuine insight.</p>
-
-<h2>The Producer vs. Consumer Distinction</h2>
-<p>Rehn addresses the apparent paradox of maintaining an active presence on social platforms while advocating against feed consumption:</p>
-<blockquote><p>"Just because I am posting does not mean I am on social media."</p></blockquote>
-<p>He delineates a sharp boundary between <b>creating</b> (treating platforms as distribution nodes for writing, educational vlogs, and philosophical inquiries) and <b>consuming</b> (passively scrolling algorithmic timelines). Protecting cognitive energy requires eliminating mindless consumption while maintaining high-leverage creative output.</p>
-
-<h2>Constructive Alternatives</h2>
-<ul>
-  <li><b>Intentional Information Diet:</b> Curating high-signal long-form essays, books, and trusted research over realtime hot-takes.</li>
-  <li><b>Environment Engineering:</b> Utilizing system-level site blockers and hosts-file focus tools to eliminate reflexive browsing during deep work.</li>
-  <li><b>User-Governed Feeds:</b> Advocating for open algorithms where individuals can customize recommendation weights (e.g., dial up philosophy and technical research, dial down commentary).</li>
-</ul>
-
+<p><b>Get Off the Feed</b> is Mili's reminder to spend less time scrolling by habit. His essay <i>Skip the feed</i> explores the difference between opening an app with a purpose and letting it decide how the next hour goes.</p>
+<h2>What gets lost</h2>
+<p>A feed offers a new subject every few seconds. Mili's concern is that this leaves less time to stay with a question, finish a book, or develop an idea of your own.</p>
+<h2>Posting and scrolling</h2>
+<p>He still uses social platforms to share writing and videos. The distinction he draws is about how he uses them: publishing something or talking to someone can be a deliberate choice, while checking the feed can become a reflex.</p>
+<h2>Practical alternatives</h2>
+<ul><li>Decide what you want to look up before opening the app.</li><li>Keep books, essays, or longer videos you actually want to finish within reach.</li><li>Use site blockers when repeated checking interrupts work.</li><li>Where possible, choose who and what appears in your feed.</li></ul>
+<p>The useful question is whether the time went where you wanted it to go.</p>
       </div>
-
-      <div class="catlinks">
-        <b>Category:</b> <a href="#__main__">Philosophies &amp; Frameworks</a> &middot; <b>Related Articles:</b> <a href="#letting-go">Letting Go</a> · <a href="#action-over-inaction">Action Over Inaction</a> · <a href="#inner-work-first">Inner Work First</a> · <a href="#create-more-buddhas-per-capita">Create More Buddhas Per Capita</a>
-      </div>
-
-      <div class="article-footer">
-        <a href="#__main__" class="back-link">← Return to Main Page</a>
-      </div>
+      <div class="catlinks"><b>Category:</b> <a href="#mp-philosophies">Ideas &amp; Notes</a> &middot; <b>Related Articles:</b> <a href="#education">Education Should Teach the Inner Life</a> · <a href="#personal-energy">Personal Energy</a></div>
+      <div class="article-footer"><a href="#__main__" class="back-link">← Return to Main Page</a></div>
     </article>
     
     <article id="education" class="wiki-article">
-      <div class="pagehead">
-        <h1>Education Should Teach the Inner Life</h1>
-        <div class="article-meta-badge"><span class="badge philosophy">Institutions &amp; Learning</span></div>
-      </div>
-      <div class="subtitle">From Milipedia, the free personal knowledge base of Maximilian Rehn</div>
-      
-      <div class="article-summary-box">
-        <b>Summary:</b> A sustained critique of modern education for teaching excessive static data while ignoring self-understanding, emotional regulation, and attention training.
-      </div>
-
+      <div class="pagehead"><h1>Education Should Teach the Inner Life</h1><div class="article-meta-badge"><span class="badge philosophy">Education</span></div></div>
+      <div class="subtitle">From Milipedia, the personal knowledge base of Maximilian Rehn</div>
+      <div class="article-summary-box"><b>Summary:</b> Make understanding thoughts, emotions, and attention part of learning.</div>
       <div class="article-body">
-        
-<p><b>Education Should Teach the Inner Life</b> is a recurring theme across Rehn's writing from 2020 through 2026: formal educational institutions demand over a decade of youth attention teaching static facts, while completely omitting the most critical lifelong skill—how to understand, regulate, and direct one's own mind.</p>
-
-<h2>The Central Critique</h2>
-<p>In <i>"Thought should be a subject in school,"</i> Rehn argues that in an era of ubiquitous search engines and generative AI, accumulating rote knowledge is an antiquated metric of intelligence. Presenting students with endless information without teaching mental hygiene creates educated individuals who remain helpless in the face of anxiety, compulsive habits, and existential aimlessness.</p>
-
-<h2>Proposed Curriculum: Mental and Spiritual Hygiene</h2>
-<p>In <i>"Spiritual Health as a Subject in School,"</i> he outlines core domains that should be taught with increasing depth from primary education through university:</p>
-<ol>
-  <li><b>Observation of Thought:</b> Training students to observe their mental patterns without immediate emotional entanglement.</li>
-  <li><b>Constructive Boredom:</b> Protecting unstructured downtime, allowing children to discover their authentic intrinsic curiosities rather than filling every void with stimuli.</li>
-  <li><b>Attention Training:</b> Cultivating sustained concentration, sensory awareness, and cognitive endurance.</li>
-  <li><b>Direction-Oriented Living:</b> Shifting from purely goal-oriented education (which creates constant inadequacy punctuated by brief accomplishment spikes) to direction-oriented living, where daily curiosity and mastery are intrinsically rewarding.</li>
-</ol>
-
-<h2>The AI-Era Justification</h2>
-<p>In his 2026 lectures and essays, Rehn notes that AI models are rapidly mastering technical problem-solving and encyclopedic recall. As machine intelligence handles data synthesis, the enduring human value of universities and academies will inevitably shift from information transmission to the cultivation of character, wisdom, and self-mastery.</p>
-
+<p><b>Education Should Teach the Inner Life</b> is an argument in Mili's writing that schools should give more time to understanding thoughts, feelings, and attention.</p>
+<h2>The question</h2>
+<p>In <i>Thought should be a subject in school</i> and <i>Spiritual Health as a Subject in School</i>, he asks why students spend so much time learning about the world and comparatively little learning how to handle their own mental habits.</p>
+<h2>What lessons might cover</h2>
+<ol><li><b>Recognizing thoughts:</b> Notice the difference between an event and the story you tell about it.</li><li><b>Handling emotions:</b> Name a feeling and practice pausing before reacting.</li><li><b>Paying attention:</b> Learn to notice distraction and return to a task.</li><li><b>Unstructured time:</b> Leave room to discover interests without filling every pause.</li><li><b>Choosing a direction:</b> Explore what makes learning worthwhile beyond grades.</li></ol>
+<h2>Why AI enters the discussion</h2>
+<p>As tools make answers easier to obtain, Mili argues that judgment and self-understanding deserve more attention in education. The proposal raises practical questions too: who teaches these skills, and how can schools make room for different beliefs?</p>
       </div>
-
-      <div class="catlinks">
-        <b>Category:</b> <a href="#__main__">Philosophies &amp; Frameworks</a> &middot; <b>Related Articles:</b> <a href="#letting-go">Letting Go</a> · <a href="#action-over-inaction">Action Over Inaction</a> · <a href="#inner-work-first">Inner Work First</a> · <a href="#create-more-buddhas-per-capita">Create More Buddhas Per Capita</a>
-      </div>
-
-      <div class="article-footer">
-        <a href="#__main__" class="back-link">← Return to Main Page</a>
-      </div>
+      <div class="catlinks"><b>Category:</b> <a href="#mp-philosophies">Ideas &amp; Notes</a> &middot; <b>Related Articles:</b> <a href="#create-more-buddhas-per-capita">Create More Buddhas Per Capita</a> · <a href="#mind-constructs-reality">Mind Constructs Reality</a></div>
+      <div class="article-footer"><a href="#__main__" class="back-link">← Return to Main Page</a></div>
     </article>
     
     <article id="personal-energy" class="wiki-article">
-      <div class="pagehead">
-        <h1>Personal Energy as the Master Resource</h1>
-        <div class="article-meta-badge"><span class="badge philosophy">Life Design</span></div>
-      </div>
-      <div class="subtitle">From Milipedia, the free personal knowledge base of Maximilian Rehn</div>
-      
-      <div class="article-summary-box">
-        <b>Summary:</b> Evaluating life decisions by their net impact on physical and mental vitality, pricing conformity and social status games in the currency of energy.
-      </div>
-
+      <div class="pagehead"><h1>Personal Energy</h1><div class="article-meta-badge"><span class="badge philosophy">Work &amp; Daily Life</span></div></div>
+      <div class="subtitle">From Milipedia, the personal knowledge base of Maximilian Rehn</div>
+      <div class="article-summary-box"><b>Summary:</b> Pay attention to what leaves you rested, engaged, or drained.</div>
       <div class="article-body">
-        
-<p><b>Personal Energy as the Master Resource</b> is Rehn's primary analytical frame for life design and decision-making: every project, relationship, habit, and social commitment is priced by its net impact on personal energy and vitality.</p>
-
-<h2>Energy as the Universal Currency</h2>
-<p>In his essay <i>"On personal energy,"</i> Rehn argues that time management is secondary to energy management. Having eight hours of fatigued, unfocused time produces trivial creative output, whereas two hours of peak mental energy can yield breakthrough ideas and high-leverage execution.</p>
-
-<h2>Applications of the Energy Frame</h2>
-<ul>
-  <li><b>The True Cost of Conformity:</b> Pursuing socially prescribed paths solely to meet external expectations bleeds energy continuously through low-grade chronic tension. Authentic self-chosen paths may carry high upfront uncertainty, but generate long-term energy and enthusiasm.</li>
-  <li><b>Status Games as Energy Traps:</b> Competing in zero-sum social prestige games forces the brain into a defensive, hyper-vigilant posture. Discovery mode—driven by genuine curiosity—creates renewable energy and unlocks creativity.</li>
-  <li><b>Radical Honesty:</b> Living incongruently requires immense cognitive bandwidth to maintain facades. Absolute alignment between inner values, speech, and action eliminates friction and conserves vitality.</li>
-  <li><b>Awareness as Renewable Fuel:</b> Cultivating curious attention in ordinary moments turns daily experience into a continuous source of learning rather than an exhausting chore.</li>
-</ul>
-
-<h2>The Physical Foundation</h2>
-<p>Rehn underscores that mental energy cannot be divorced from biological inputs. Optimizing sleep quality, nutrition, physical training (BJJ, mobility), and environmental light exposure are the non-negotiable physical substrates upon which intellectual clarity depends.</p>
-
+<p><b>Personal Energy</b> is a lens Mili uses when deciding how to spend his time. A free afternoon is different from an afternoon when you also have the attention and enthusiasm to use it.</p>
+<h2>Questions worth asking</h2>
+<ul><li>Which commitments feel worthwhile afterward, even when they are tiring?</li><li>Which ones mostly come from wanting approval?</li><li>Is this task draining because it matters and is difficult, or because something needs to change?</li><li>Would rest help more than another attempt to force concentration?</li></ul>
+<h2>Time and attention</h2>
+<p>In <i>On personal energy</i>, he explores why scheduling every available hour can miss how work actually feels. Sleep, food, exercise, and breaks are part of the picture, alongside whether a project holds your interest.</p>
+<h2>A lens, not a score</h2>
+<p>Relationships and responsibilities cannot always be judged by how energized they leave you. The point is to notice patterns and make more deliberate choices, rather than expect every worthwhile activity to feel good immediately.</p>
       </div>
-
-      <div class="catlinks">
-        <b>Category:</b> <a href="#__main__">Philosophies &amp; Frameworks</a> &middot; <b>Related Articles:</b> <a href="#letting-go">Letting Go</a> · <a href="#action-over-inaction">Action Over Inaction</a> · <a href="#inner-work-first">Inner Work First</a> · <a href="#create-more-buddhas-per-capita">Create More Buddhas Per Capita</a>
-      </div>
-
-      <div class="article-footer">
-        <a href="#__main__" class="back-link">← Return to Main Page</a>
-      </div>
+      <div class="catlinks"><b>Category:</b> <a href="#mp-philosophies">Ideas &amp; Notes</a> &middot; <b>Related Articles:</b> <a href="#action-over-inaction">Action Over Inaction</a> · <a href="#get-off-the-feed">Get Off the Feed</a></div>
+      <div class="article-footer"><a href="#__main__" class="back-link">← Return to Main Page</a></div>
     </article>
     
     <article id="metamodernism" class="wiki-article">
-      <div class="pagehead">
-        <h1>Metamodernism</h1>
-        <div class="article-meta-badge"><span class="badge philosophy">Political &amp; Cultural Philosophy</span></div>
-      </div>
-      <div class="subtitle">From Milipedia, the free personal knowledge base of Maximilian Rehn</div>
-      
-      <div class="article-summary-box">
-        <b>Summary:</b> Synthesizing modernist sincerity and postmodern critique: supporting psychological maturation as a primary goal of culture and governance.
-      </div>
-
+      <div class="pagehead"><h1>Metamodernism</h1><div class="article-meta-badge"><span class="badge philosophy">Culture &amp; Politics</span></div></div>
+      <div class="subtitle">From Milipedia, the personal knowledge base of Maximilian Rehn</div>
+      <div class="article-summary-box"><b>Summary:</b> Take criticism seriously while still trying to build something worthwhile.</div>
       <div class="article-body">
-        
-<p><b>Metamodernism</b> is a cultural and political philosophy studied extensively by Rehn, rooted in Hanzi Freinacht's <i>The Listening Society</i> and Ken Wilber's Integral Theory. It seeks to transcend both naive modernist optimism and cynical postmodern deconstruction by embracing an integrative, developmental view of human civilization.</p>
-
-<h2>The Metamodern Synthesis</h2>
-<p>Metamodernism oscillates between and unites two historical attitudes:</p>
-<ul>
-  <li><b>Modernism:</b> Faith in progress, grand narratives, technological potential, and sincere aspiration.</li>
-  <li><b>Postmodernism:</b> Critical skepticism, awareness of power structures, irony, and deconstruction of dogmas.</li>
-  <li><b>Metamodernism:</b> <i>Informed naivety</i> — recognizing the complexities and limitations highlighted by postmodernism while choosing to act with earnestness, courage, and constructive vision.</li>
-</ul>
-
+<p><b>Metamodernism</b> is a topic Mili has explored through Hanzi Freinacht's <i>The Listening Society</i> and Ken Wilber's work. These notes focus on the question of how to remain hopeful without ignoring what is wrong.</p>
+<h2>The basic contrast</h2>
+<ul><li><b>Modernism:</b> In this framing, confidence in progress and the possibility of improving society.</li><li><b>Postmodernism:</b> Questioning confident stories, including whose interests they serve.</li><li><b>Metamodernism:</b> Taking those criticisms seriously while remaining willing to commit to something.</li></ul>
+<p>This is a simplified introduction to the contrast used in these notes.</p>
 <h2>The Listening Society</h2>
-<p>In a six-part essay series on his blog, Rehn explored the core concepts of metamodern governance:</p>
-<ul>
-  <li><b>The 'Dividual' Self:</b> The recognition that individuals are not isolated islands, but open, transpersonal nodes shaped by culture, language, and shared environments.</li>
-  <li><b>Developmental Stages:</b> Human beings progress through distinct stages of psychological complexity, cognitive bandwidth, and emotional maturity. Effective societal structures must meet people where they are and nurture their upward development.</li>
-  <li><b>The Welfare State to the Listening Society:</b> While the traditional welfare state focuses on material redistribution and basic safety nets, a modern civilization must prioritize psychological development, mental health, and human flourishing as fundamental public concerns.</li>
-</ul>
-
-<h2>The Golden Spiral as Visual Metaphor</h2>
-<p>Rehn frequently references the golden spiral as a symbol of metamodern development: elegant, adaptive complexity emerging organically from simple, recursive principles rather than top-down authoritarian control.</p>
-
+<p>Mili's essays explore Freinacht's proposal that politics should pay more attention to people's emotional lives and development, alongside material needs.</p>
+<p>Other recurring questions concern how relationships shape a person, how perspectives change over time, and how institutions could support that growth. These are ideas to examine, rather than a settled ranking of people or cultures.</p>
+<h2>A visual metaphor</h2>
+<p>The golden spiral appears as an image of growth that keeps building on what came before.</p>
       </div>
-
-      <div class="catlinks">
-        <b>Category:</b> <a href="#__main__">Philosophies &amp; Frameworks</a> &middot; <b>Related Articles:</b> <a href="#letting-go">Letting Go</a> · <a href="#action-over-inaction">Action Over Inaction</a> · <a href="#inner-work-first">Inner Work First</a> · <a href="#create-more-buddhas-per-capita">Create More Buddhas Per Capita</a>
-      </div>
-
-      <div class="article-footer">
-        <a href="#__main__" class="back-link">← Return to Main Page</a>
-      </div>
+      <div class="catlinks"><b>Category:</b> <a href="#mp-philosophies">Ideas &amp; Notes</a> &middot; <b>Related Articles:</b> <a href="#education">Education Should Teach the Inner Life</a> · <a href="#network-state">Network State &amp; Pop-Up Cities</a></div>
+      <div class="article-footer"><a href="#__main__" class="back-link">← Return to Main Page</a></div>
     </article>
     
     <article id="network-state" class="wiki-article">
-      <div class="pagehead">
-        <h1>Network State &amp; Pop-Up Cities</h1>
-        <div class="article-meta-badge"><span class="badge philosophy">Governance &amp; Future of Living</span></div>
-      </div>
-      <div class="subtitle">From Milipedia, the free personal knowledge base of Maximilian Rehn</div>
-      
-      <div class="article-summary-box">
-        <b>Summary:</b> Balaji Srinivasan&#x27;s concept of cloud-first communities founding physical enclaves, and Rehn&#x27;s real-world explorations across global pop-up cities.
-      </div>
-
+      <div class="pagehead"><h1>Network State &amp; Pop-Up Cities</h1><div class="article-meta-badge"><span class="badge philosophy">Communities &amp; Places</span></div></div>
+      <div class="subtitle">From Milipedia, the personal knowledge base of Maximilian Rehn</div>
+      <div class="article-summary-box"><b>Summary:</b> Notes on online communities that meet, live, and build things together.</div>
       <div class="article-body">
-        
-<p>The <b>Network State</b> is Balaji Srinivasan's framework for digital-native governance: highly aligned online communities that organize around shared moral visions and economic density, establish physical enclaves, and eventually achieve diplomatic recognition as sovereign entities.</p>
-
-<h2>Pop-Up Cities as Institutional Laboratories</h2>
-<p>Rather than treating the network state as pure theory, Rehn explored the movement on the ground across multiple pop-up cities (temporary dense residencies that gather founders, researchers, and creators), including Zuzalu, Edge Esmeralda, and Balaji's Network School.</p>
-<p>In his essay <i>"Reflections on Pop-up Cities,"</i> Rehn synthesizes the core learnings from living within these experimental communities:</p>
-<ul>
-  <li><b>Maximizing Serendipity:</b> Concentrating high-agency individuals in walkable, shared living spaces accelerates collaboration, creative prototypes, and deep friendships far beyond remote digital interaction.</li>
-  <li><b>Culture and the Built Environment:</b> The spatial design of shared kitchens, co-working lounges, and daily wellness rituals directly shapes communal warmth and productive output.</li>
-  <li><b>Substance over 'Larping':</b> The vital distinction between communities that produce real software, research, and governance models versus those trapped in circular meta-debates without tangible execution.</li>
-  <li><b>Integrating Health with Technology:</b> The most sustainable and vibrant tech enclaves intentionally integrate physical health, meditation, and outdoor movement alongside intense engineering sprints.</li>
-</ul>
-
-<h2>Core Reading List on Parallel Institutions</h2>
-<ul>
-  <li><i>The Network State</i> — Balaji Srinivasan</li>
-  <li><i>The Sovereign Individual</i> — James Dale Davidson &amp; Lord William Rees-Mogg</li>
-  <li><i>The Beginning of Infinity</i> — David Deutsch</li>
-  <li><i>From Third World to First</i> — Lee Kuan Yew</li>
-  <li><i>The Bitcoin Standard</i> — Saifedean Ammous</li>
-</ul>
-
+<p>A <b>Network State</b>, in Balaji Srinivasan's proposal, begins as an online community and aims to develop a physical presence and eventually political recognition. <b>Pop-up cities</b> are temporary gatherings where people live and work together. A pop-up city does not have to share the larger political ambition.</p>
+<h2>Living with the idea</h2>
+<p>Mili's notes draw on experiences with Zuzalu, Edge Esmeralda, and Network School. In <i>Reflections on Pop-up Cities</i>, he considers what makes these communities rewarding in practice.</p>
+<ul><li><b>Repeated encounters:</b> Sharing a place makes it easier for a conversation to turn into a friendship or project.</li><li><b>Shared spaces:</b> Kitchens, work areas, and walkable surroundings influence how often people meet.</li><li><b>Doing things together:</b> Projects give a community something concrete to work on.</li><li><b>Daily life:</b> Exercise, rest, and time outside matter alongside work.</li></ul>
+<h2>Related reading</h2>
+<ul><li><i>The Network State</i> — Balaji Srinivasan</li><li><i>The Sovereign Individual</i> — James Dale Davidson and Lord William Rees-Mogg</li><li><i>The Beginning of Infinity</i> — David Deutsch</li><li><i>From Third World to First</i> — Lee Kuan Yew</li><li><i>The Bitcoin Standard</i> — Saifedean Ammous</li></ul>
       </div>
-
-      <div class="catlinks">
-        <b>Category:</b> <a href="#__main__">Philosophies &amp; Frameworks</a> &middot; <b>Related Articles:</b> <a href="#letting-go">Letting Go</a> · <a href="#action-over-inaction">Action Over Inaction</a> · <a href="#inner-work-first">Inner Work First</a> · <a href="#create-more-buddhas-per-capita">Create More Buddhas Per Capita</a>
-      </div>
-
-      <div class="article-footer">
-        <a href="#__main__" class="back-link">← Return to Main Page</a>
-      </div>
+      <div class="catlinks"><b>Category:</b> <a href="#mp-philosophies">Ideas &amp; Notes</a> &middot; <b>Related Articles:</b> <a href="#action-over-inaction">Action Over Inaction</a> · <a href="#metamodernism">Metamodernism</a></div>
+      <div class="article-footer"><a href="#__main__" class="back-link">← Return to Main Page</a></div>
     </article>
     
 
@@ -1330,19 +989,12 @@
 
   <!-- Search & Navigation Script -->
   <script>
-    const SEARCH_INDEX = [
-  {"title": "Letting Go", "slug": "letting-go", "summary": "Mili's core life philosophy inspired by Michael Singer: releasing internal resistance so that thought and emotion flow freely, allowing beauty to emerge naturally.", "category": "Core Philosophy"},
-  {"title": "Action Over Inaction", "slug": "action-over-inaction", "summary": "Action done beautifully. Fighting entropy, recognizing that motivation follows action, and expanding luck by increasing surface area.", "category": "Operating Principle"},
-  {"title": "Inner Work First", "slug": "inner-work-first", "summary": "The foundational decision made at age 20: internal clarity must precede external ambition, because one's internal state colors every endeavor.", "category": "Foundational Philosophy"},
-  {"title": "Create More Buddhas Per Capita", "slug": "create-more-buddhas-per-capita", "summary": "A core public tenet and long-standing bio: cultivating minds that experience thoughts without sticking, building the mental immunity required for a free society.", "category": "Vision & Metacognition"},
-  {"title": "Mind Constructs Reality", "slug": "mind-constructs-reality", "summary": "A multi-year synthesis of neuroscience, cognitive science, and philosophy: subjective reality is generated by internal generative models that can be examined and reprogrammed.", "category": "Epistemology"},
-  {"title": "Life Philosophy of Beauty", "slug": "life-philosophy-of-beauty", "summary": "Life as an open-ended game where the win condition is present-moment awareness and the perception of beauty, especially as AI graduates humanity from mechanical achievement.", "category": "Teleology & Aesthetics"},
-  {"title": "Get Off the Feed", "slug": "get-off-the-feed", "summary": "The argument against passive algorithmic scrolling, protecting cognitive sovereignty, and embracing the producer-over-consumer mindset.", "category": "Attention & Culture"},
-  {"title": "Education Should Teach the Inner Life", "slug": "education", "summary": "A sustained critique of modern education for teaching excessive static data while ignoring self-understanding, emotional regulation, and attention training.", "category": "Institutions & Learning"},
-  {"title": "Personal Energy as the Master Resource", "slug": "personal-energy", "summary": "Evaluating life decisions by their net impact on physical and mental vitality, pricing conformity and social status games in the currency of energy.", "category": "Life Design"},
-  {"title": "Metamodernism", "slug": "metamodernism", "summary": "Synthesizing modernist sincerity and postmodern critique: supporting psychological maturation as a primary goal of culture and governance.", "category": "Political & Cultural Philosophy"},
-  {"title": "Network State & Pop-Up Cities", "slug": "network-state", "summary": "Balaji Srinivasan's concept of cloud-first communities founding physical enclaves, and Rehn's real-world explorations across global pop-up cities.", "category": "Governance & Future of Living"}
-];
+    const SEARCH_INDEX = Array.from(document.querySelectorAll('.wiki-article')).map(article => ({
+      title: article.querySelector('h1').textContent,
+      slug: article.id,
+      summary: article.querySelector('.article-summary-box').textContent.replace(/^Summary:\s*/, ''),
+      category: article.querySelector('.badge').textContent
+    }));
     const searchInput = document.getElementById('wiki-search');
     const searchDropdown = document.getElementById('search-dropdown');
     const sidebar = document.getElementById('sidebar');
@@ -1386,7 +1038,7 @@
         );
 
         if (matches.length === 0) {
-          searchDropdown.innerHTML = '<div style="padding:10px 12px; font-size:12px; color:var(--text-muted);">No matching philosophies found.</div>';
+          searchDropdown.innerHTML = '<div style="padding:10px 12px; font-size:12px; color:var(--text-muted);">No matching articles found.</div>';
           searchDropdown.style.display = 'block';
           return;
         }
@@ -1416,12 +1068,20 @@
       });
     }
 
-    // Scroll to top and close mobile menu on hash change
-    window.addEventListener('hashchange', () => {
-      window.scrollTo(0, 0);
+    // Article links open at the top; section links keep their destination.
+    function navigateToHash() {
       if (sidebar) sidebar.classList.remove('open');
       updateActiveSidebar();
-    });
+      requestAnimationFrame(() => {
+        const target = document.getElementById(location.hash.slice(1));
+        if (!target || target.matches('article')) {
+          window.scrollTo(0, 0);
+        } else {
+          target.scrollIntoView({ block: 'start' });
+        }
+      });
+    }
+    window.addEventListener('hashchange', navigateToHash);
 
     function updateActiveSidebar() {
       const currentHash = location.hash || '#__main__';
@@ -1434,7 +1094,7 @@
       });
     }
     
-    updateActiveSidebar();
+    navigateToHash();
   </script>
 </body>
 </html>
