@@ -1,0 +1,781 @@
+{
+  "fetchedAt": "2026-09-18T07:48:31.876Z",
+  "events": [
+    {
+      "id": "21476725220",
+      "type": "CreateEvent",
+      "repo": "Milbaxter/opensource-jigsaw",
+      "at": "2026-09-18T07:47:02Z"
+    },
+    {
+      "id": "21391941665",
+      "type": "PushEvent",
+      "repo": "Milbaxter/ideal-personal-context",
+      "at": "2026-09-17T11:02:04Z"
+    },
+    {
+      "id": "21387715223",
+      "type": "CreateEvent",
+      "repo": "Milbaxter/ideal-personal-context",
+      "at": "2026-09-17T11:00:08Z"
+    },
+    {
+      "id": "21193338584",
+      "type": "CreateEvent",
+      "repo": "Milbaxter/wordless-conversation-canvas",
+      "at": "2026-09-15T12:32:25Z"
+    },
+    {
+      "id": "21171132766",
+      "type": "PushEvent",
+      "repo": "Milbaxter/optimal-deepseek-harness-setup",
+      "at": "2026-09-15T07:33:29Z"
+    },
+    {
+      "id": "21065626014",
+      "type": "PushEvent",
+      "repo": "Milbaxter/optimal-deepseek-harness-setup",
+      "at": "2026-09-14T08:07:06Z"
+    },
+    {
+      "id": "21064955829",
+      "type": "PushEvent",
+      "repo": "Milbaxter/maximilianrehn",
+      "at": "2026-09-14T07:58:58Z"
+    },
+    {
+      "id": "21064735973",
+      "type": "PushEvent",
+      "repo": "Milbaxter/maximilianrehn",
+      "at": "2026-09-14T07:56:13Z"
+    },
+    {
+      "id": "21215965081",
+      "type": "PushEvent",
+      "repo": "Milbaxter/maximilianrehn",
+      "at": "2026-09-14T07:55:26Z"
+    },
+    {
+      "id": "21134947996",
+      "type": "PushEvent",
+      "repo": "Milbaxter/optimal-deepseek-harness-setup",
+      "at": "2026-09-13T08:20:51Z"
+    },
+    {
+      "id": "21098321212",
+      "type": "CreateEvent",
+      "repo": "Milbaxter/optimal-deepseek-harness-setup",
+      "at": "2026-09-13T07:58:18Z"
+    },
+    {
+      "id": "20890274939",
+      "type": "PushEvent",
+      "repo": "Milbaxter/jarvis-deepseek",
+      "at": "2026-09-11T10:34:11Z"
+    },
+    {
+      "id": "20884554917",
+      "type": "CreateEvent",
+      "repo": "Milbaxter/jarvis-deepseek",
+      "at": "2026-09-11T10:21:03Z"
+    },
+    {
+      "id": "20690216847",
+      "type": "CreateEvent",
+      "repo": "Milbaxter/decision-hub",
+      "at": "2026-09-10T13:26:31Z"
+    },
+    {
+      "id": "20616921070",
+      "type": "PushEvent",
+      "repo": "Milbaxter/spout-beta-review-2026-09",
+      "at": "2026-09-09T18:41:31Z"
+    },
+    {
+      "id": "20832559094",
+      "type": "CreateEvent",
+      "repo": "Milbaxter/spout-beta-review-2026-09",
+      "at": "2026-09-09T18:19:31Z"
+    },
+    {
+      "id": "20531752700",
+      "type": "PushEvent",
+      "repo": "Milbaxter/dsh-evolution-lab",
+      "at": "2026-09-07T18:20:54Z"
+    },
+    {
+      "id": "20528642488",
+      "type": "PushEvent",
+      "repo": "Milbaxter/dsh-evolution-lab",
+      "at": "2026-09-07T17:45:14Z"
+    },
+    {
+      "id": "20356002344",
+      "type": "PushEvent",
+      "repo": "Milbaxter/dsh-evolution-lab",
+      "at": "2026-09-07T17:44:27Z"
+    },
+    {
+      "id": "20472550046",
+      "type": "PushEvent",
+      "repo": "Milbaxter/enlightenedbits",
+      "at": "2026-09-07T08:11:19Z"
+    },
+    {
+      "id": "20314073889",
+      "type": "PushEvent",
+      "repo": "Milbaxter/enlightenedbits",
+      "at": "2026-09-07T08:06:43Z"
+    },
+    {
+      "id": "20313867435",
+      "type": "PushEvent",
+      "repo": "Milbaxter/enlightenedbits",
+      "at": "2026-09-07T08:03:49Z"
+    },
+    {
+      "id": "20313618021",
+      "type": "PushEvent",
+      "repo": "Milbaxter/enlightenedbits",
+      "at": "2026-09-07T08:00:26Z"
+    },
+    {
+      "id": "20311598910",
+      "type": "PushEvent",
+      "repo": "Milbaxter/enlightenedbits",
+      "at": "2026-09-07T07:33:58Z"
+    },
+    {
+      "id": "20469088181",
+      "type": "PushEvent",
+      "repo": "Milbaxter/enlightenedbits",
+      "at": "2026-09-07T07:31:00Z"
+    },
+    {
+      "id": "20449442872",
+      "type": "PushEvent",
+      "repo": "Milbaxter/enlightenedbits",
+      "at": "2026-09-07T07:25:09Z"
+    },
+    {
+      "id": "20310975138",
+      "type": "PushEvent",
+      "repo": "Milbaxter/enlightenedbits",
+      "at": "2026-09-07T07:24:48Z"
+    },
+    {
+      "id": "20465811393",
+      "type": "PushEvent",
+      "repo": "Milbaxter/enlightenedbits",
+      "at": "2026-09-07T07:22:12Z"
+    },
+    {
+      "id": "20310686045",
+      "type": "PushEvent",
+      "repo": "Milbaxter/enlightenedbits",
+      "at": "2026-09-07T07:20:28Z"
+    },
+    {
+      "id": "20310650127",
+      "type": "PushEvent",
+      "repo": "Milbaxter/enlightenedbits",
+      "at": "2026-09-07T07:19:56Z"
+    },
+    {
+      "id": "20310574964",
+      "type": "PushEvent",
+      "repo": "Milbaxter/enlightenedbits",
+      "at": "2026-09-07T07:18:49Z"
+    },
+    {
+      "id": "20310362961",
+      "type": "PushEvent",
+      "repo": "Milbaxter/enlightenedbits",
+      "at": "2026-09-07T07:15:41Z"
+    },
+    {
+      "id": "20466528786",
+      "type": "PushEvent",
+      "repo": "Milbaxter/maximilianrehn",
+      "at": "2026-09-07T07:01:42Z"
+    },
+    {
+      "id": "20475667010",
+      "type": "PushEvent",
+      "repo": "Milbaxter/maximilianrehn",
+      "at": "2026-09-07T06:54:15Z"
+    },
+    {
+      "id": "20308270032",
+      "type": "CreateEvent",
+      "repo": "Milbaxter/dsh-evolution-lab",
+      "at": "2026-09-07T06:44:26Z"
+    },
+    {
+      "id": "20397087416",
+      "type": "CreateEvent",
+      "repo": "Milbaxter/somnus",
+      "at": "2026-09-06T11:41:41Z"
+    },
+    {
+      "id": "20318250255",
+      "type": "PushEvent",
+      "repo": "Milbaxter/polytranscript",
+      "at": "2026-09-05T05:40:17Z"
+    },
+    {
+      "id": "20119282684",
+      "type": "PushEvent",
+      "repo": "Milbaxter/polytranscript",
+      "at": "2026-09-05T05:34:37Z"
+    },
+    {
+      "id": "20339366764",
+      "type": "CreateEvent",
+      "repo": "Milbaxter/polytranscript",
+      "at": "2026-09-05T05:34:35Z"
+    },
+    {
+      "id": "20153180474",
+      "type": "PushEvent",
+      "repo": "Milbaxter/excalibur-harness-loop",
+      "at": "2026-09-04T18:52:53Z"
+    },
+    {
+      "id": "20286307415",
+      "type": "PushEvent",
+      "repo": "Milbaxter/excalibur-harness-loop",
+      "at": "2026-09-04T18:46:53Z"
+    },
+    {
+      "id": "20311511337",
+      "type": "PushEvent",
+      "repo": "Milbaxter/excalibur-harness-loop",
+      "at": "2026-09-04T18:36:54Z"
+    },
+    {
+      "id": "20285508271",
+      "type": "PushEvent",
+      "repo": "Milbaxter/excalibur-harness-loop",
+      "at": "2026-09-04T18:31:06Z"
+    },
+    {
+      "id": "20146326958",
+      "type": "PushEvent",
+      "repo": "Milbaxter/excalibur-harness-loop",
+      "at": "2026-09-04T18:23:02Z"
+    },
+    {
+      "id": "20095610165",
+      "type": "PushEvent",
+      "repo": "Milbaxter/excalibur-harness-loop",
+      "at": "2026-09-04T18:13:34Z"
+    },
+    {
+      "id": "20289683639",
+      "type": "PushEvent",
+      "repo": "Milbaxter/excalibur-harness-loop",
+      "at": "2026-09-04T18:08:49Z"
+    },
+    {
+      "id": "20288593234",
+      "type": "PushEvent",
+      "repo": "Milbaxter/excalibur-harness-loop",
+      "at": "2026-09-04T17:47:56Z"
+    },
+    {
+      "id": "20150134874",
+      "type": "PushEvent",
+      "repo": "Milbaxter/excalibur-harness-loop",
+      "at": "2026-09-04T17:44:20Z"
+    },
+    {
+      "id": "20149707871",
+      "type": "PushEvent",
+      "repo": "Milbaxter/excalibur-harness-loop",
+      "at": "2026-09-04T17:34:51Z"
+    },
+    {
+      "id": "20093574189",
+      "type": "CreateEvent",
+      "repo": "Milbaxter/excalibur-harness-loop",
+      "at": "2026-09-04T17:34:50Z"
+    },
+    {
+      "id": "20280553019",
+      "type": "PushEvent",
+      "repo": "Milbaxter/ai-book-ideas",
+      "at": "2026-09-04T16:54:45Z"
+    },
+    {
+      "id": "20090272228",
+      "type": "PushEvent",
+      "repo": "Milbaxter/ai-book-ideas",
+      "at": "2026-09-04T16:53:46Z"
+    },
+    {
+      "id": "20147749193",
+      "type": "PushEvent",
+      "repo": "Milbaxter/ai-book-ideas",
+      "at": "2026-09-04T16:52:36Z"
+    },
+    {
+      "id": "20294644608",
+      "type": "PushEvent",
+      "repo": "Milbaxter/ai-book-ideas",
+      "at": "2026-09-04T16:51:57Z"
+    },
+    {
+      "id": "20285484069",
+      "type": "PushEvent",
+      "repo": "Milbaxter/ai-book-ideas",
+      "at": "2026-09-04T16:51:34Z"
+    },
+    {
+      "id": "20272553921",
+      "type": "PushEvent",
+      "repo": "Milbaxter/ai-book-ideas",
+      "at": "2026-09-04T13:37:44Z"
+    },
+    {
+      "id": "20270529101",
+      "type": "PushEvent",
+      "repo": "Milbaxter/ai-book-ideas",
+      "at": "2026-09-04T13:16:59Z"
+    },
+    {
+      "id": "20132659523",
+      "type": "PushEvent",
+      "repo": "Milbaxter/ai-book-ideas",
+      "at": "2026-09-04T13:14:14Z"
+    },
+    {
+      "id": "20288529321",
+      "type": "PushEvent",
+      "repo": "Milbaxter/ai-book-ideas",
+      "at": "2026-09-04T13:13:42Z"
+    },
+    {
+      "id": "20288488969",
+      "type": "PushEvent",
+      "repo": "Milbaxter/ai-book-ideas",
+      "at": "2026-09-04T13:13:15Z"
+    },
+    {
+      "id": "20288230842",
+      "type": "PushEvent",
+      "repo": "Milbaxter/ai-book-ideas",
+      "at": "2026-09-04T13:10:22Z"
+    },
+    {
+      "id": "20287765673",
+      "type": "PushEvent",
+      "repo": "Milbaxter/ai-book-ideas",
+      "at": "2026-09-04T13:05:26Z"
+    },
+    {
+      "id": "20129808931",
+      "type": "CreateEvent",
+      "repo": "Milbaxter/ai-book-ideas",
+      "at": "2026-09-04T13:04:42Z"
+    },
+    {
+      "id": "19871374808",
+      "type": "PushEvent",
+      "repo": "Milbaxter/excalibur",
+      "at": "2026-09-02T13:31:18Z"
+    },
+    {
+      "id": "19806140441",
+      "type": "PushEvent",
+      "repo": "Milbaxter/excalibur",
+      "at": "2026-09-02T13:28:05Z"
+    },
+    {
+      "id": "19896391467",
+      "type": "CreateEvent",
+      "repo": "Milbaxter/awesome-mcp-servers",
+      "at": "2026-09-02T13:27:33Z"
+    },
+    {
+      "id": "19865775855",
+      "type": "CreateEvent",
+      "repo": "Milbaxter/excalibur",
+      "at": "2026-09-02T13:22:45Z"
+    },
+    {
+      "id": "19904973539",
+      "type": "PushEvent",
+      "repo": "Milbaxter/polytranscript",
+      "at": "2026-09-02T08:49:54Z"
+    },
+    {
+      "id": "19775859400",
+      "type": "PushEvent",
+      "repo": "Milbaxter/polytranscript",
+      "at": "2026-09-02T08:49:30Z"
+    },
+    {
+      "id": "19840958451",
+      "type": "PushEvent",
+      "repo": "Milbaxter/polytranscript",
+      "at": "2026-09-02T08:48:59Z"
+    },
+    {
+      "id": "14267536618",
+      "type": "PullRequestEvent",
+      "repo": "Milbaxter/polytranscript",
+      "at": "2026-09-02T08:48:53Z"
+    },
+    {
+      "id": "19777638436",
+      "type": "PushEvent",
+      "repo": "Milbaxter/polytranscript",
+      "at": "2026-09-02T08:45:07Z"
+    },
+    {
+      "id": "19777610731",
+      "type": "PushEvent",
+      "repo": "Milbaxter/polytranscript",
+      "at": "2026-09-02T08:44:49Z"
+    },
+    {
+      "id": "19777585346",
+      "type": "PushEvent",
+      "repo": "Milbaxter/polytranscript",
+      "at": "2026-09-02T08:44:32Z"
+    },
+    {
+      "id": "19904082069",
+      "type": "PushEvent",
+      "repo": "Milbaxter/polytranscript",
+      "at": "2026-09-02T08:43:52Z"
+    },
+    {
+      "id": "19833304048",
+      "type": "PushEvent",
+      "repo": "Milbaxter/polytranscript",
+      "at": "2026-09-02T08:42:39Z"
+    },
+    {
+      "id": "19931115787",
+      "type": "PushEvent",
+      "repo": "Milbaxter/polytranscript",
+      "at": "2026-09-02T08:41:58Z"
+    },
+    {
+      "id": "19777299918",
+      "type": "PushEvent",
+      "repo": "Milbaxter/polytranscript",
+      "at": "2026-09-02T08:41:31Z"
+    },
+    {
+      "id": "19777147845",
+      "type": "PushEvent",
+      "repo": "Milbaxter/polytranscript",
+      "at": "2026-09-02T08:39:59Z"
+    },
+    {
+      "id": "19774881288",
+      "type": "PushEvent",
+      "repo": "Milbaxter/polytranscript",
+      "at": "2026-09-02T08:39:33Z"
+    },
+    {
+      "id": "19903400883",
+      "type": "PushEvent",
+      "repo": "Milbaxter/polytranscript",
+      "at": "2026-09-02T08:39:10Z"
+    },
+    {
+      "id": "19824804450",
+      "type": "PushEvent",
+      "repo": "Milbaxter/polytranscript",
+      "at": "2026-09-02T08:38:36Z"
+    },
+    {
+      "id": "19864597634",
+      "type": "PushEvent",
+      "repo": "Milbaxter/polytranscript",
+      "at": "2026-09-02T08:38:18Z"
+    },
+    {
+      "id": "19844821764",
+      "type": "PushEvent",
+      "repo": "Milbaxter/polytranscript",
+      "at": "2026-09-02T08:37:29Z"
+    },
+    {
+      "id": "19778085641",
+      "type": "CreateEvent",
+      "repo": "Milbaxter/polytranscript",
+      "at": "2026-09-02T08:23:00Z"
+    },
+    {
+      "id": "19896609628",
+      "type": "PushEvent",
+      "repo": "Milbaxter/polytranscript",
+      "at": "2026-09-02T08:02:14Z"
+    },
+    {
+      "id": "19828255062",
+      "type": "CreateEvent",
+      "repo": "Milbaxter/awesome-mcp-servers-1",
+      "at": "2026-09-02T07:59:27Z"
+    },
+    {
+      "id": "19836893758",
+      "type": "CreateEvent",
+      "repo": "Milbaxter/awesome-mcp-servers",
+      "at": "2026-09-02T07:58:55Z"
+    },
+    {
+      "id": "19772302830",
+      "type": "PushEvent",
+      "repo": "Milbaxter/polytranscript",
+      "at": "2026-09-02T07:53:06Z"
+    },
+    {
+      "id": "19827167222",
+      "type": "PushEvent",
+      "repo": "Milbaxter/polytranscript",
+      "at": "2026-09-02T07:50:14Z"
+    },
+    {
+      "id": "19808235093",
+      "type": "PushEvent",
+      "repo": "Milbaxter/polytranscript",
+      "at": "2026-09-02T06:09:20Z"
+    },
+    {
+      "id": "19824497603",
+      "type": "PushEvent",
+      "repo": "Milbaxter/polytranscript",
+      "at": "2026-09-02T06:08:24Z"
+    },
+    {
+      "id": "19817637677",
+      "type": "PushEvent",
+      "repo": "Milbaxter/polytranscript",
+      "at": "2026-09-02T06:02:50Z"
+    },
+    {
+      "id": "19816932166",
+      "type": "PushEvent",
+      "repo": "Milbaxter/polytranscript",
+      "at": "2026-09-02T05:58:55Z"
+    },
+    {
+      "id": "19837955726",
+      "type": "PushEvent",
+      "repo": "Milbaxter/polytranscript",
+      "at": "2026-09-02T05:55:37Z"
+    },
+    {
+      "id": "19836884559",
+      "type": "PushEvent",
+      "repo": "Milbaxter/polytranscript",
+      "at": "2026-09-02T05:48:57Z"
+    },
+    {
+      "id": "19836816518",
+      "type": "CreateEvent",
+      "repo": "Milbaxter/polytranscript",
+      "at": "2026-09-02T05:48:31Z"
+    },
+    {
+      "id": "19681064986",
+      "type": "PushEvent",
+      "repo": "Milbaxter/maximilianrehn",
+      "at": "2026-09-01T15:08:24Z"
+    },
+    {
+      "id": "19767375099",
+      "type": "PushEvent",
+      "repo": "Milbaxter/maximilianrehn",
+      "at": "2026-09-01T15:06:53Z"
+    },
+    {
+      "id": "19767295417",
+      "type": "PushEvent",
+      "repo": "Milbaxter/maximilianrehn",
+      "at": "2026-09-01T15:06:21Z"
+    },
+    {
+      "id": "19686163321",
+      "type": "PushEvent",
+      "repo": "Milbaxter/maximilianrehn",
+      "at": "2026-09-01T15:03:36Z"
+    },
+    {
+      "id": "19685553908",
+      "type": "PushEvent",
+      "repo": "Milbaxter/maximilianrehn",
+      "at": "2026-09-01T15:03:36Z"
+    },
+    {
+      "id": "19679711828",
+      "type": "PushEvent",
+      "repo": "Milbaxter/maximilianrehn",
+      "at": "2026-09-01T15:02:46Z"
+    },
+    {
+      "id": "19679640534",
+      "type": "PushEvent",
+      "repo": "Milbaxter/maximilianrehn",
+      "at": "2026-09-01T15:02:05Z"
+    },
+    {
+      "id": "19676221101",
+      "type": "PushEvent",
+      "repo": "Milbaxter/enlightenedbits",
+      "at": "2026-09-01T14:30:28Z"
+    },
+    {
+      "id": "19764925881",
+      "type": "PushEvent",
+      "repo": "Milbaxter/enlightenedbits",
+      "at": "2026-09-01T14:28:58Z"
+    },
+    {
+      "id": "19738057390",
+      "type": "PushEvent",
+      "repo": "Milbaxter/enlightenedbits",
+      "at": "2026-09-01T14:21:19Z"
+    },
+    {
+      "id": "19675459292",
+      "type": "PushEvent",
+      "repo": "Milbaxter/enlightenedbits",
+      "at": "2026-09-01T14:20:03Z"
+    },
+    {
+      "id": "19675201182",
+      "type": "PushEvent",
+      "repo": "Milbaxter/enlightenedbits",
+      "at": "2026-09-01T14:17:50Z"
+    },
+    {
+      "id": "19725145335",
+      "type": "PushEvent",
+      "repo": "Milbaxter/enlightenedbits",
+      "at": "2026-09-01T14:14:20Z"
+    },
+    {
+      "id": "19675159575",
+      "type": "PushEvent",
+      "repo": "Milbaxter/enlightenedbits",
+      "at": "2026-09-01T14:13:46Z"
+    },
+    {
+      "id": "19724993024",
+      "type": "PushEvent",
+      "repo": "Milbaxter/enlightenedbits",
+      "at": "2026-09-01T14:12:56Z"
+    },
+    {
+      "id": "19693496876",
+      "type": "PushEvent",
+      "repo": "Milbaxter/enlightenedbits",
+      "at": "2026-09-01T14:12:06Z"
+    },
+    {
+      "id": "19673991432",
+      "type": "PushEvent",
+      "repo": "Milbaxter/enlightenedbits",
+      "at": "2026-09-01T14:10:37Z"
+    },
+    {
+      "id": "19724571107",
+      "type": "PushEvent",
+      "repo": "Milbaxter/enlightenedbits",
+      "at": "2026-09-01T14:08:56Z"
+    },
+    {
+      "id": "19736625610",
+      "type": "PushEvent",
+      "repo": "Milbaxter/enlightenedbits",
+      "at": "2026-09-01T14:08:32Z"
+    },
+    {
+      "id": "19727515663",
+      "type": "PushEvent",
+      "repo": "Milbaxter/enlightenedbits",
+      "at": "2026-09-01T12:40:41Z"
+    },
+    {
+      "id": "19665267635",
+      "type": "PushEvent",
+      "repo": "Milbaxter/enlightenedbits",
+      "at": "2026-09-01T12:40:18Z"
+    },
+    {
+      "id": "19727043708",
+      "type": "PushEvent",
+      "repo": "Milbaxter/enlightenedbits",
+      "at": "2026-09-01T12:35:19Z"
+    },
+    {
+      "id": "19663697798",
+      "type": "CreateEvent",
+      "repo": "Milbaxter/awesome-dsh-plugin",
+      "at": "2026-09-01T11:34:08Z"
+    }
+  ],
+  "repositories": {
+    "Milbaxter/opensource-jigsaw": {
+      "description": "Astra-powered discovery of unexpected open source combinations, with evidence-led research and a high bar for commercial potential."
+    },
+    "Milbaxter/ideal-personal-context": {
+      "description": "An open idea: turn your digital history into a private, living personal wiki for personalized AI."
+    },
+    "Milbaxter/wordless-conversation-canvas": {
+      "description": "A wordless, animated canvas shaped by live conversation and voice commands."
+    },
+    "Milbaxter/optimal-deepseek-harness-setup": {
+      "description": "Milbaxter’s evolving DeepSeek Harness autonomy lab: native plugins, open-source research, and evidence-tracked Astra reviews"
+    },
+    "Milbaxter/maximilianrehn": {
+      "description": null
+    },
+    "Milbaxter/jarvis-deepseek": {
+      "description": "Local office assistant on DeepSeek Harness: wake-word voice, subscription Codex workers, context and a TV workspace. Development preview."
+    },
+    "Milbaxter/decision-hub": {
+      "description": "Common: an open-source decision and project context hub for small teams."
+    },
+    "Milbaxter/spout-beta-review-2026-09": {
+      "description": "Spout beta product review: devnet testing, borrowing-capacity mismatch, transaction evidence, and disclosure recommendations."
+    },
+    "Milbaxter/dsh-evolution-lab": {
+      "description": "Open research into better DeepSeek Harness plugins and configurations through reproducible, budget-aware experiments and community contributions."
+    },
+    "Milbaxter/enlightenedbits": {
+      "description": null
+    },
+    "Milbaxter/somnus": {
+      "description": "A society of the well-rested. Entry is by mark only."
+    },
+    "Milbaxter/polytranscript": {
+      "description": "⚡ Multi-platform media intelligence API (YouTube + TikTok + Podcasts) with built-in AI chaptering, soundbite search, and Agent-ready MCP server"
+    },
+    "Milbaxter/excalibur-harness-loop": {
+      "description": "Excalibur: self-improving harness loop — autonomously test DeepSeek Harness plugins on Terminal-Bench 2.1 with DeepSeek V4 Flash (spec + candidate queue)"
+    },
+    "Milbaxter/ai-book-ideas": {
+      "description": "AI book ideas"
+    },
+    "Milbaxter/excalibur": {
+      "description": "Excalibur: Peak Frontier Intelligence On Demand - Multi-Model Ensemble Audit & Plan Synthesis"
+    },
+    "Milbaxter/awesome-mcp-servers": {
+      "description": "A collection of MCP servers."
+    },
+    "Milbaxter/awesome-mcp-servers-1": {
+      "description": "A curated list of Model Context Protocol (MCP) servers"
+    },
+    "Milbaxter/awesome-dsh-plugin": {
+      "description": "A curated list of plugins for DeepSeek Harness (dsh) · DeepSeek Harness 插件精选列表"
+    }
+  }
+}
