@@ -8,11 +8,10 @@ p { margin: 0; line-height: 1.55; }
 .back-to-notes:focus-visible { outline: 2px solid #916b00; outline-offset: 5px; }
 .workbench { margin: 38px 0 0; }
 .bench-heading { display: flex; justify-content: space-between; align-items: center; }
-.eyebrow, .desk-label, .bench-stamp { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+.eyebrow, .desk-label { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
 .eyebrow { font-size: 11px; letter-spacing: 1.3px; text-transform: uppercase; color: #716e62; }
 .bench-heading h1 { margin: 8px 0 10px; font-size: clamp(30px, 5vw, 43px); font-weight: 600; letter-spacing: -1.8px; }
 .bench-heading h1 span { color: #aa710f; }
-.bench-stamp { font-size: 12px; line-height: 1.4; color: #6b775c; border: 1px solid #929b86; border-radius: 50%; padding: 15px 13px; transform: rotate(12deg); text-align: center; }
 .bench-intro { color: #716e62; font-size: 16px; }
 .bench-status { font-size: 12px; color: #666558; }
 .bench-status::before { content: ''; display: inline-block; height: 6px; width: 6px; background: #758167; border-radius: 50%; margin-right: 7px; }
@@ -41,7 +40,6 @@ p { margin: 0; line-height: 1.55; }
 .bench-empty { font-size: 15px; padding: 25px 0; color: #686659; }
 @media (max-width: 650px) {
   .workbench { margin-top: 52px; }
-  .bench-stamp { display: none; }
   .project-notes { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 25px 17px; }
   .desktop { margin-top: 26px; padding: 20px 18px 17px; }
   .project-note { padding: 19px 13px 13px; min-height: 213px; }
