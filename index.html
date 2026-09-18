@@ -4,10 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#faf9f6">
-  <meta name="description" content="Maximilian Rehn. Building with AI, and a peek at what's on my workbench.">
+  <meta name="description" content="build with ai. create personal website.">
   <title>Maximilian Rehn — Notes</title>
-  <link rel="stylesheet" href="workbench.css">
-  <script type="module" src="workbench.mjs"></script>
   <style>
     :root { color-scheme: light; }
     * { box-sizing: border-box; }
@@ -55,6 +53,9 @@
     }
     .info { max-width: 490px; }
     .info-label { margin-bottom: 5px; }
+    .workbench-link { margin-top: 38px; }
+    .workbench-link a { color: #916b00; font-size: 16px; text-underline-offset: 4px; }
+    .workbench-link a:focus-visible { outline: 2px solid #916b00; outline-offset: 5px; }
     @media (min-width: 700px) {
       .note { padding-top: 50px; }
       .label { margin-bottom: 78px; }
@@ -73,27 +74,12 @@
     </div>
     <h1>build with ai.</h1>
     <p class="task"><span class="circle" aria-hidden="true"></span><span>create personal website.</span></p>
-    <section class="workbench" aria-labelledby="workbench-title">
-      <div class="bench-heading">
-        <div><span class="eyebrow">A little peek behind the scenes</span><h2 id="workbench-title">on my workbench<span>.</span></h2></div>
-        <span class="bench-stamp" aria-hidden="true">always<br>tinkering ↗</span>
-      </div>
-      <p class="bench-intro">What's on my workbench right now, based on my latest GitHub activity.</p>
-      <div class="desktop">
-        <div class="desk-label" aria-hidden="true">WORK IN PROGRESS / HANDLE WITH CURIOSITY</div>
-        <div id="project-notes" class="project-notes" aria-label="Recently active projects"></div>
-        <div id="past-projects" class="past-projects" aria-label="Older projects" hidden></div>
-        <p id="bench-empty" class="bench-empty" hidden>A little room for the next idea. Explore my past projects on GitHub below.</p>
-        <div class="desk-bottom" aria-hidden="true"><span>ideas → experiments → something useful?</span><span class="pencil"></span></div>
-      </div>
-      <div class="bench-footer"><span class="bench-status" id="bench-status" role="status">Opening the workshop…</span><a href="https://github.com/Milbaxter?tab=repositories">all projects on GitHub ↗</a></div>
-      <noscript><p class="bench-empty">Turn on JavaScript to explore the workbench, or <a href="https://github.com/Milbaxter">see my projects on GitHub</a>.</p></noscript>
-    </section>
     <div class="info">
       <p class="info-label">info:</p>
       <p>Aalto University, technology, philosophy, neuroscience, society, applied AI, media, BJJ, and yoga.</p>
       <p style="margin-top: 1em;">Competitive gaming background: Global Elite in CS:GO, Legend in Hearthstone, and Master in StarCraft II.</p>
     </div>
+    <p class="workbench-link"><a href="workbench.html" target="_blank" rel="noopener">Have a look at what's on my workbench ↗</a></p>
   </main>
 </body>
 </html>
