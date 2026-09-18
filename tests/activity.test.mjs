@@ -17,14 +17,12 @@ test('only includes unique public work on owned projects, sorted by date', () =>
   assert.deepEqual(result.map(item => item.id), ['2', '1']);
 });
 
-test('projects fade, move to the back, disappear, and return with new activity', () => {
+test('projects fade, disappear, and return with new activity', () => {
   const events = normalizeEvents([event('1', '2026-09-01T12:00:00Z')]);
   const fresh = getWorkbench(events, new Date('2026-09-02T12:00:00Z'))[0];
   const older = getWorkbench(events, new Date('2026-09-15T12:00:00Z'))[0];
   const fading = getWorkbench(events, new Date('2026-09-29T12:00:00Z'))[0];
-  assert.equal(fresh.past, false);
   assert.equal(fresh.opacity, 1);
-  assert.equal(older.past, true);
   assert.ok(older.opacity < fresh.opacity);
   assert.ok(fading.opacity < older.opacity);
   assert.deepEqual(getWorkbench(events, new Date('2026-10-01T12:00:00Z')), []);
@@ -32,13 +30,13 @@ test('projects fade, move to the back, disappear, and return with new activity',
   assert.equal(getWorkbench(revived, new Date('2026-10-01T12:00:00Z'))[0].opacity, 1);
 });
 
-test('keeps only six projects at the front and ignores future activity', () => {
+test('keeps only the six most recently active projects and ignores future activity', () => {
   const events = normalizeEvents(Array.from({ length: 8 }, (_, index) =>
     event(String(index), `2026-09-${18 - index}T10:00:00Z`, { repo: { name: `Milbaxter/project-${index}` } })
   ));
   events.push({ repo: 'Milbaxter/future', at: '2027-01-01T00:00:00Z' });
   const projects = getWorkbench(events, new Date('2026-09-18T12:00:00Z'));
-  assert.equal(projects.length, 8);
-  assert.equal(projects.filter(project => !project.past).length, 6);
+  assert.equal(projects.length, 6);
+  assert.deepEqual(projects.map(project => project.name), Array.from({ length: 6 }, (_, index) => `Milbaxter/project-${index}`));
   assert.equal(projects[0].name, 'Milbaxter/project-0');
 });

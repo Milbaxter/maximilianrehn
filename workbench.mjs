@@ -15,11 +15,8 @@ function element(tag, className, text) {
 function render() {
   const projects = getWorkbench(events);
   const notes = $('project-notes');
-  const past = $('past-projects');
   notes.replaceChildren();
-  past.replaceChildren();
   $('bench-empty').hidden = projects.length > 0;
-  past.hidden = !projects.some(project => project.past);
 
   for (const [index, project] of projects.entries()) {
     const link = element('a', 'project-note');
@@ -34,7 +31,7 @@ function render() {
     const description = repositories[project.name]?.description;
     if (description) link.append(element('span', 'project-description', description));
     link.append(element('span', 'note-meta', 'open on GitHub ↗'));
-    (project.past ? past : notes).append(link);
+    notes.append(link);
   }
 }
 

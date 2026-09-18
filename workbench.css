@@ -58,12 +58,3 @@ p { margin: 0; line-height: 1.55; }
 @media (prefers-reduced-motion: reduce) { .project-note { transition: none; } }
 
 .project-note:hover, .project-note:focus-visible { opacity: 1; transform: translateY(-5px) rotate(0); box-shadow: 3px 10px 12px #413c2524; }
-.past-projects { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px 18px; margin-top: 34px; padding-top: 28px; border-top: 1px dashed #bdb8a8; }
-.past-projects[hidden] { display: none; }
-.past-projects .project-note { min-height: 134px; padding: 16px 13px 12px; }
-.past-projects .project-name { font-size: 14px; margin-bottom: 14px; }
-.past-projects .project-description { display: none; }
-.past-projects .note-top { margin-bottom: 8px; }
-.past-projects .note-mark { font-size: 16px; }
-.past-projects .note-meta { font-size: 9px; }
-@media (max-width: 650px) { .past-projects { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

@@ -34,10 +34,9 @@ export function getWorkbench(events, now = new Date()) {
   }
   return [...projects.values()]
     .sort((a, b) => a.age - b.age)
-    .slice(0, 18)
-    .map((project, index) => ({
+    .slice(0, 6)
+    .map(project => ({
       ...project,
-      past: index >= 6 || project.age >= 10,
       opacity: 1 - Math.max(0, project.age - 4) / 26,
     }));
 }
