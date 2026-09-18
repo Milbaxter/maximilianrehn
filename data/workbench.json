@@ -1,6 +1,24 @@
 {
-  "fetchedAt": "2026-09-18T07:48:31.876Z",
+  "fetchedAt": "2026-09-18T07:56:11.370Z",
   "events": [
+    {
+      "id": "21477267415",
+      "type": "PushEvent",
+      "repo": "Milbaxter/opensource-jigsaw",
+      "at": "2026-09-18T07:54:29Z"
+    },
+    {
+      "id": "21476974985",
+      "type": "CreateEvent",
+      "repo": "Milbaxter/nugget-mode",
+      "at": "2026-09-18T07:50:29Z"
+    },
+    {
+      "id": "21476945166",
+      "type": "PushEvent",
+      "repo": "Milbaxter/maximilianrehn",
+      "at": "2026-09-18T07:50:10Z"
+    },
     {
       "id": "21476725220",
       "type": "CreateEvent",
@@ -776,6 +794,9 @@
     },
     "Milbaxter/awesome-dsh-plugin": {
       "description": "A curated list of plugins for DeepSeek Harness (dsh) · DeepSeek Harness 插件精选列表"
+    },
+    "Milbaxter/nugget-mode": {
+      "description": "A way to turn knowledge into complete, concise ideas with expandable context and source-grounded AI discussion."
     }
   }
 }

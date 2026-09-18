@@ -1,9 +1,7 @@
-import { USER, kinds, normalizeEvents, summarize, countsLabel } from './activity.mjs';
+import { USER, normalizeEvents, getWorkbench } from './activity.mjs';
 
 let events = [];
 let repositories = {};
-let days = 30;
-let selected = null;
 const dateLabel = value => new Date(value).toLocaleDateString('en', { month: 'short', day: 'numeric', timeZone: 'UTC' });
 const $ = id => document.getElementById(id);
 
@@ -15,80 +13,29 @@ function element(tag, className, text) {
 }
 
 function render() {
-  const summary = summarize(events, days);
+  const projects = getWorkbench(events);
   const notes = $('project-notes');
+  const past = $('past-projects');
   notes.replaceChildren();
-  $('bench-empty').hidden = summary.projects.length > 0;
-  $('activity-summary').textContent = `${summary.events.length} public activities · ${summary.projects.length} projects`;
-  $('activity-range').textContent = `${dateLabel(summary.daily[0].date)} – ${dateLabel(summary.daily.at(-1).date)} · UTC`;
-  $('activity-days').replaceChildren(...summary.daily.map(day => {
-    const mark = element('span', 'activity-day');
-    const label = `${dateLabel(day.date)}: ${day.count} ${day.count === 1 ? 'activity' : 'activities'}`;
-    mark.title = label;
-    mark.setAttribute('aria-label', label);
-    mark.setAttribute('role', 'img');
-    mark.dataset.level = Math.min(4, Math.ceil(day.count / 2));
-    return mark;
-  }));
+  past.replaceChildren();
+  $('bench-empty').hidden = projects.length > 0;
+  past.hidden = !projects.some(project => project.past);
 
-  for (const [index, project] of summary.projects.slice(0, 6).entries()) {
-    const button = element('button', 'project-note');
-    button.type = 'button';
-    button.setAttribute('aria-pressed', String(selected === project.name));
-    button.setAttribute('aria-controls', 'project-detail');
+  for (const [index, project] of projects.entries()) {
+    const link = element('a', 'project-note');
+    link.href = `https://github.com/${project.name}`;
+    link.style.setProperty('--presence', project.opacity);
+    link.setAttribute('aria-label', `${project.name.split('/')[1]} on GitHub, last active ${dateLabel(project.latest)}`);
     const top = element('span', 'note-top');
-    const mark = element('span', 'note-mark', ['⌘', '✳', '⌁', '↗', '⊹', '◇'][index]);
+    const mark = element('span', 'note-mark', ['⌘', '✳', '⌁', '↗', '⊹', '◇'][index % 6]);
     mark.setAttribute('aria-hidden', 'true');
-    top.append(mark, element('span', '', `touched ${dateLabel(project.latest)}`));
-    button.append(top, element('span', 'project-name', project.name.split('/')[1].replaceAll('-', ' ')));
+    top.append(mark, element('span', '', dateLabel(project.latest)));
+    link.append(top, element('span', 'project-name', project.name.split('/')[1].replaceAll('-', ' ')));
     const description = repositories[project.name]?.description;
-    if (description) button.append(element('span', 'project-description', description));
-    const sparkline = element('span', 'note-sparkline');
-    sparkline.setAttribute('aria-hidden', 'true');
-    const daily = summarize(project.events, days).daily;
-    const max = Math.max(1, ...daily.map(day => day.count));
-    for (const day of daily) {
-      const bar = element('i');
-      bar.style.height = `${day.count ? 4 + day.count / max * 20 : 2}px`;
-      if (!day.count) bar.style.opacity = '.12';
-      sparkline.append(bar);
-    }
-    const meta = element('span', 'note-meta');
-    meta.append(element('span', '', `${project.events.length} ${project.events.length === 1 ? 'activity' : 'activities'}`), element('span', '', 'take a peek ↗'));
-    button.append(sparkline, meta);
-    button.addEventListener('click', () => {
-      selected = selected === project.name ? null : project.name;
-      for (const note of notes.children) note.setAttribute('aria-pressed', String(note === button && selected !== null));
-      renderDetail(selected ? project : null);
-      if (selected) {
-        $('detail-title').focus({ preventScroll: true });
-        $('project-detail').scrollIntoView({ block: 'nearest', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
-      }
-    });
-    notes.append(button);
+    if (description) link.append(element('span', 'project-description', description));
+    link.append(element('span', 'note-meta', 'open on GitHub ↗'));
+    (project.past ? past : notes).append(link);
   }
-  renderDetail(summary.projects.slice(0, 6).find(project => project.name === selected));
-}
-
-function renderDetail(project) {
-  const detail = $('project-detail');
-  detail.replaceChildren();
-  detail.hidden = !project;
-  if (!project) { selected = null; return; }
-  const title = element('h3', '', project.name.split('/')[1]);
-  title.id = 'detail-title';
-  title.tabIndex = -1;
-  const list = element('ul');
-  for (const event of [...project.events].sort((a, b) => Date.parse(b.at) - Date.parse(a.at)).slice(0, 4)) {
-    const row = element('li');
-    const time = element('time', '', dateLabel(event.at));
-    time.dateTime = event.at;
-    row.append(element('span', '', kinds[event.type][2]), time);
-    list.append(row);
-  }
-  const link = element('a', '', 'Open the project on GitHub ↗');
-  link.href = `https://github.com/${project.name}`;
-  detail.append(title, element('p', '', countsLabel(project.events)), list, link);
 }
 
 async function getJSON(url) {
@@ -118,22 +65,20 @@ async function load() {
     events = normalizeEvents(raw);
     render();
     $('bench-status').textContent = 'Fresh from GitHub';
-    $('bench-source').textContent = 'Latest available public activity · up to 300 events · GitHub may lag a few hours.';
-    const projects = summarize(events, 30).projects.slice(0, 6);
-    await Promise.allSettled(projects.map(async project => {
+    const projects = getWorkbench(events);
+    await Promise.allSettled(projects.filter(project => !repositories[project.name]).map(async project => {
       const repo = await getJSON(`https://api.github.com/repos/${project.name}`);
       repositories[project.name] = { description: repo.description };
     }));
-    // Add descriptions without replacing a note while someone is interacting with it.
-    for (const [index, project] of summarize(events, days).projects.slice(0, 6).entries()) {
-      const note = $('project-notes').children[index];
+    for (const project of projects) {
+      const note = document.querySelector(`.project-note[href="https://github.com/${project.name}"]`);
       const description = repositories[project.name]?.description;
-      if (description && !note.querySelector('.project-description')) note.querySelector('.project-name').after(element('span', 'project-description', description));
+      if (note && description && !note.querySelector('.project-description')) note.querySelector('.project-name').after(element('span', 'project-description', description));
     }
   } catch {
     if (snapshot) {
       $('bench-status').textContent = `Saved snapshot · ${dateLabel(snapshot.fetchedAt)}`;
-      $('bench-source').textContent = `GitHub is unavailable right now. Showing the snapshot from ${new Date(snapshot.fetchedAt).toLocaleString('en', { timeZone: 'UTC' })} UTC; activity windows use today's date.`;
+      $('bench-status').title = `GitHub is unavailable. Saved ${new Date(snapshot.fetchedAt).toUTCString()}. Projects still fade with age.`;
     } else {
       $('bench-status').textContent = 'The workshop is temporarily offline';
       $('bench-empty').hidden = false;
@@ -142,11 +87,4 @@ async function load() {
   }
 }
 
-document.querySelectorAll('[data-days]').forEach(button => {
-  button.addEventListener('click', () => {
-    days = Number(button.dataset.days);
-    for (const option of document.querySelectorAll('[data-days]')) option.setAttribute('aria-pressed', String(option === button));
-    render();
-  });
-});
 load();
